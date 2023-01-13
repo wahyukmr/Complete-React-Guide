@@ -1,22 +1,15 @@
-## REGULAR JAVASCRIPT ( Pendekatan Imperative )
+## State
 
-Memberikan petunjuk yang jelas, langkah demi langkah yang jelas mengenai apa yang harus dilakukan JavaScript di browser. Kelemahannya adalah mendapatkan UI yang rumit.
+State adalah bagian dari komponen React yang digunakan untuk menyimpan data yang mungkin akan berubah selama masa pakai aplikasi. Misalnya, jika kita membuat aplikasi to-do list, state bisa digunakan untuk menyimpan daftar tugas yang harus dikerjakan. State tidak dapat diubah secara langsung, tetapi hanya dapat diubah melalui fungsi setState().
 
-        const element = document.createElement("p");
-        element.textContent = "This is also visible";
-        document.getElementById("root").appendChild(element);
+## Two-way-binding
 
-</br>
+Two-way-binding adalah teknik yang digunakan untuk menyinkronkan nilai state dengan nilai dari elemen HTML, sehingga ketika salah satunya diubah, yang lainnya juga akan terubah. Ini biasa digunakan untuk membuat form yang dinamis, dimana pengguna dapat memasukkan data ke dalam form dan data tersebut akan disimpan di dalam state.
 
-## REACT ( Pendekatan Declarative )
+## Handler Events
 
-Akan menghasilkan interuksi di belakang layar untuk kemudian ditampilkan lebih lanjut.
+Untuk menangani event di React, kita harus menambahkan event handler ke elemen HTML yang ingin kita tangani eventnya. Event handler adalah fungsi yang akan dipanggil ketika event tersebut terjadi. Misalnya, untuk menangani event klik pada tombol, kita dapat menambahkan event handler "onClick" ke elemen tombol:
 
--   Fitur JSX (kode HTML dalam JavaScript) ini adalah sintaks khusus yang ditemukan dan diperkenalkan oleh React, dan berfungsi dalam file JavaScript karena langkah-langkah transformasi ini berjalan di belakang layar.
+    <button onClick={this.handleClick}>Click me</button>
 
-            return (
-                <div>
-                    <h2>Let's get started!</h2>
-                    <p>This is also visible</p>
-                </div>
-            );
+Kemudian, kita harus membuat fungsi "handleClick" di komponen React yang akan dipanggil ketika tombol diklik.

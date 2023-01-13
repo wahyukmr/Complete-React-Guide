@@ -1,4 +1,5 @@
-import Expense from "./components/Expenses/Expense";
+import Expense from "./components/expenses/Expense";
+import NewExpenses from "./components/newExpenses/NewExpense";
 
 // ROOT COMPONENTS
 function App() {
@@ -29,16 +30,15 @@ function App() {
         },
     ];
 
-    // REGULAR JAVASCRIPT ( imperative approach )
-    /*  const element = document.createElement("p");
-        element.textContent = "This is also visible";
-        document.getElementById("root").appendChild(element)
-    */
+    // to communicate from NewExpense to App components
+    const addExpenseHandler = (expenses) => {
+        console.log("in app.js");
+        console.log(expenses);
+    };
 
-    // REACT ( declarative approach )
     return (
         <div>
-            <h2>Let's get started!</h2>
+            <NewExpenses onAddExpense={addExpenseHandler} />
             <Expense item={expenses} />
         </div>
     );
