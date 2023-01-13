@@ -2,9 +2,9 @@ Dalam pengembangan aplikasi yang besar dapat bisa terjadi penamaan class yang sa
 
 ## Menggunakan Pakage styled-components
 
--   pakage yang dapat membantu untuk membangun komponen yang memiliki style tertentu, dimana style benar-benar hanya mempengarui komponen tempat mereka dipasang dan bukan komponen lainnya
+-   pakage yang dapat membantu untuk membangun komponen yang memiliki style tertentu, dimana style benar-benar hanya mempengarui komponen tempat mereka dipasang dan bukan komponen lainnya.
 
--   Mengelola dan mengatur CSS dengan menetapkannya langsung pada file JS
+-   Mengelola dan mengatur CSS dengan menetapkannya langsung pada file JS.
 
 ## Menggunakan CSS Modules
 
