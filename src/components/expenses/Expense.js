@@ -1,47 +1,36 @@
 import React, { useState } from "react";
 import Card from "../UI/Card";
 import "./Expense.css";
+import ExpenseChart from "./ExpenseChart";
 import ExpenseFilter from "./ExpenseFilter";
-import ExpenseItem from "./ExpenseItem";
+import ExpenseList from "./ExpenseList";
 
 function Expenses(props) {
     const currentYear = new Date().getFullYear().toString();
 
-    const [selectedYear, setSelectedYear] = useState(currentYear);
+    const [selectedExpense, setSelectedExpense] = useState(currentYear);
 
     const updateSelectedYearHandler = (year) => {
-        setSelectedYear(year);
+        setSelectedExpense(year);
     };
+
+    const filterByYear = props.items.filter((expense) => {
+        return expense.date.getFullYear().toString() === selectedExpense;
+    });
 
     return (
         <div>
-            {/* same like this: <div className="Card expenses"></div> */}
             <Card className="expense">
                 <ExpenseFilter
-                    onSelectedYear={selectedYear}
+                    SelectedYear={selectedExpense}
                     onUpdateSelectedYear={updateSelectedYearHandler}
                 />
+                <ExpenseChart expenses={filterByYear} />
 
-                <ExpenseItem
-                    // Add attribute in the custom element
-                    name={props.item[0].title}
-                    price={props.item[0].amount}
-                    date={props.item[0].date}
-                />
-                <ExpenseItem
-                    name={props.item[1].title}
-                    price={props.item[1].amount}
-                    date={props.item[1].date}
-                />
-                <ExpenseItem
-                    name={props.item[2].title}
-                    price={props.item[2].amount}
-                    date={props.item[2].date}
-                />
-                <ExpenseItem
-                    name={props.item[3].title}
-                    price={props.item[3].amount}
-                    date={props.item[3].date}
+                <ExpenseList
+                    filterByYears={filterByYear}
+                    selectViewAll={selectedExpense}
+                    expenseAllItems={props.items}
                 />
             </Card>
         </div>
