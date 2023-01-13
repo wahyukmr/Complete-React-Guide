@@ -1,13 +1,19 @@
-Dalam pengembangan aplikasi yang besar dapat bisa terjadi penamaan class yang sama pada komponen yang berbeda. Ini akan memicu style dapat menyebar ke komponen lain. Untuk mencegahnya bisa menggunakan cara berikut:
+Debugging adalah proses menemukan dan mengatasi masalah atau bug pada sebuah aplikasi. Pada React, ada beberapa cara yang dapat dilakukan untuk melakukan debugging:
 
-## Menggunakan Pakage styled-components
+</br>
 
--   pakage yang dapat membantu untuk membangun komponen yang memiliki style tertentu, dimana style benar-benar hanya mempengarui komponen tempat mereka dipasang dan bukan komponen lainnya.
+## 1. Menggunakan browser Developer Tools:
 
--   Mengelola dan mengatur CSS dengan menetapkannya langsung pada file JS.
+Setiap browser modern biasanya memiliki Developer Tools yang dapat digunakan untuk men-debug aplikasi web. Kita dapat mengakses Developer Tools dengan menekan tombol F12 pada keyboard atau dengan mengklik kanan pada halaman web dan memilih opsi "Inspect". Kita dapat menggunakan fitur-fitur seperti "Elements" untuk melihat struktur DOM (Document Object Model) dan "Console" untuk mengevaluasi kode JavaScript.
 
-## Menggunakan CSS Modules
+</br>
 
--   CSS Modules adalah sebuah teknik untuk mengelola dan mengatur CSS dalam aplikasi React. Ini memungkinkan untuk menggunakan CSS dalam aplikasi dengan cara yang lebih terstruktur dan terorganisir.
+## 2. Menggunakan aplikasi pihak ketiga:
 
--   Dengan CSS Modules, dapat menuliskan CSS seperti biasa, tetapi setiap class CSS akan diberi nama unik yang dienkripsi secara otomatis. Ini memungkinkan Anda untuk menghindari konflik nama class CSS di dalam aplikasi Anda dan membuat lebih mudah untuk mengelola dan mengatur CSS dalam aplikasi yang kompleks.
+Ada beberapa aplikasi pihak ketiga yang dapat membantu Anda men-debug aplikasi React, seperti React Developer Tools (untuk Chrome dan Firefox) yang menyediakan fitur tambahan seperti melihat state dan props dari setiap komponen.
+
+</br>
+
+## 3. Menggunakan debugger JavaScript:
+
+Kia dapat menambahkan perintah debugger pada baris kode yang ingin Anda debug. Ketika kode tersebut dijalankan, browser akan mengepause eksekusinya dan memberikan Anda akses ke fitur-fitur debugging seperti mengevaluasi variabel atau menjalankan kode satu baris demi satu baris.
