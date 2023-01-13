@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import Card from "../UI/Card";
 import Button from "../UI/Button";
@@ -7,25 +7,18 @@ import styles from "./FormInput.module.css";
 import ErrorModal from "../UI/ErrorModal";
 
 function FormInput(props) {
-    const [userInput, setUserInput] = useState({
-        name: "",
-        age: "",
-    });
     const [error, setError] = useState();
 
-    const userInputChangeHandler = (event) => {
-        setUserInput((prevState) => ({
-            ...prevState,
-            [event.target.id]: event.target.value,
-        }));
-    };
+    const nameInputRef = useRef();
+    const ageInputRef = useRef();
 
     const userInputHandler = (event) => {
         event.preventDefault();
 
-        const { name, age } = userInput;
+        const enteredName = nameInputRef.current.value;
+        const enteredAge = ageInputRef.current.value;
 
-        if (name === "" || age === "") {
+        if (enteredName === "" || enteredAge === "") {
             setError({
                 title: "Invalid Input",
                 message: "Name and age cannot be empty",
@@ -33,7 +26,7 @@ function FormInput(props) {
             return;
         }
 
-        if (+age < 1) {
+        if (+enteredAge < 1) {
             setError({
                 title: "Invalid Input",
                 message: "Age must be greater than 0",
@@ -42,13 +35,15 @@ function FormInput(props) {
         }
 
         const userData = {
-            userName: name,
-            userAge: age,
+            userName: enteredName,
+            userAge: enteredAge,
             id: Math.random().toString(),
         };
         props.onSaveUserData(userData);
 
-        setUserInput({ name: "", age: "" });
+        // hanya bisa untuk mengubah apa yang dimasukkan pengguna, tidak untuk memanipulasi DOM. Opsi lain bisa menggunkaan useState
+        nameInputRef.current.value = "";
+        ageInputRef.current.value = "";
     };
 
     const errorHandler = () => {
@@ -56,7 +51,7 @@ function FormInput(props) {
     };
 
     return (
-        <div>
+        <>
             {error && (
                 <ErrorModal
                     title={error.title}
@@ -67,25 +62,15 @@ function FormInput(props) {
             <Card className={styles.input}>
                 <form onSubmit={userInputHandler}>
                     <label htmlFor="userName">Username</label>
-                    <input
-                        id="name"
-                        type="text"
-                        value={userInput.name}
-                        onChange={userInputChangeHandler}
-                    />
+                    <input id="name" type="text" ref={nameInputRef} />
 
                     <label htmlFor="age">Age (Years)</label>
-                    <input
-                        id="age"
-                        type="number"
-                        value={userInput.age}
-                        onChange={userInputChangeHandler}
-                    />
+                    <input id="age" type="number" ref={ageInputRef} />
 
                     <Button type="submit">Add User</Button>
                 </form>
             </Card>
-        </div>
+        </>
     );
 }
 
