@@ -1,7 +1,10 @@
+import React, { useState } from "react";
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
 
 function NewExpenses(props) {
+    const [isEditing, setIsEditing] = useState(false);
+
     const saveExpenseDataHandler = (enterExpenseData) => {
         const expanseData = {
             ...enterExpenseData,
@@ -10,10 +13,25 @@ function NewExpenses(props) {
         props.onAddExpense(expanseData);
     };
 
+    const clickButtonHandler = () => {
+        setIsEditing(true);
+    };
+
+    const stopEditingHandler = () => {
+        setIsEditing(false);
+    };
+
     return (
         <div className="new-expense">
-            {/* added new Props to ExpenseForm to pass Expenses data to NewExpense. the value of this prop must be a function, which can be called in the ExpenseForm component */}
-            <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+            {!isEditing && (
+                <button onClick={clickButtonHandler}>Add New Expense</button>
+            )}
+            {isEditing && (
+                <ExpenseForm
+                    onSaveExpenseData={saveExpenseDataHandler}
+                    onStopEditing={stopEditingHandler}
+                />
+            )}
         </div>
     );
 }
