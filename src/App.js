@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
-import FormInput from "./components/UserInputs/FormInput";
-import UserList from "./components/UserLists/UserList";
+import Login from "./components/Login/Login";
+import Home from "./components/Home/Home";
+import MainHeader from "./components/MainHeader/MainHeader";
+import AuthContext from "./store/auth-context";
 
 function App() {
-    const [usersList, setUsersList] = useState([]);
+    const context = useContext(AuthContext);
 
-    const onSaveUserDataHandler = (dataUser) => {
-        setUsersList((prevUserList) => {
-            return [...prevUserList, dataUser];
-        });
-    };
     return (
-        <div>
-            <FormInput onSaveUserData={onSaveUserDataHandler} />
-            <UserList users={usersList} />
-        </div>
+        <React.Fragment>
+            <MainHeader />
+            <main>
+                {!context.isLogin && <Login />}
+                {context.isLogin && <Home />}
+            </main>
+        </React.Fragment>
     );
 }
 
