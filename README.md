@@ -12,7 +12,7 @@ useMemo dan useCallback adalah dua hook React yang digunakan untuk mengoptimalka
 
 -   useCallback digunakan untuk menyimpan sebuah komponen fungsi. Komponen tersebut akan digerakkan ulang jika dependensi yang ditentukan berubah, dan komponen yang disimpan akan digunakan kembali. useCallback sangat berguna untuk menghindari pembuatan komponen baru yang sama berulang-ulang jika dependensi tidak berubah.
 
-    -   Secara umum, useMemo digunakan untuk menyimpan hasil dari perhitungan yang intensif, seperti komputasi yang memakan banyak waktu atau mengakses data dari server. Sementara useCallback digunakan untuk menyimpan komponen fungsi yang digunakan secara berulang-ulang, seperti komponen yang digunakan dalam event handler atau sebagai child component dari component lain.
+Secara umum, useMemo digunakan untuk menyimpan hasil dari perhitungan yang intensif, seperti komputasi yang memakan banyak waktu atau mengakses data dari server. Sementara useCallback digunakan untuk menyimpan komponen fungsi yang digunakan secara berulang-ulang, seperti komponen yang digunakan dalam event handler atau sebagai child component dari component lain.
 
 ## React Handle State Updates
 
