@@ -12,7 +12,7 @@ useMemo dan useCallback adalah dua hook React yang digunakan untuk mengoptimalka
 
 -   useCallback digunakan untuk menyimpan sebuah komponen fungsi. Komponen tersebut akan digerakkan ulang jika dependensi yang ditentukan berubah, dan komponen yang disimpan akan digunakan kembali. useCallback sangat berguna untuk menghindari pembuatan komponen baru yang sama berulang-ulang jika dependensi tidak berubah.
 
-        Secara umum, useMemo digunakan untuk menyimpan hasil dari perhitungan yang intensif, seperti komputasi yang memakan banyak waktu atau mengakses data dari server. Sementara useCallback digunakan untuk menyimpan komponen fungsi yang digunakan secara berulang-ulang, seperti komponen yang digunakan dalam event handler atau sebagai child component dari component lain.
+    -   Secara umum, useMemo digunakan untuk menyimpan hasil dari perhitungan yang intensif, seperti komputasi yang memakan banyak waktu atau mengakses data dari server. Sementara useCallback digunakan untuk menyimpan komponen fungsi yang digunakan secara berulang-ulang, seperti komponen yang digunakan dalam event handler atau sebagai child component dari component lain.
 
 ## React Handle State Updates
 
@@ -24,7 +24,7 @@ React secara default mengelola batching pada setState. Jika kita memanggil setSt
 
 Perlu diingat, saat menggunakan state scheduling dan batching, kita perlu mengelola cleanup function agar tidak terjadi memory leak. Apalagi saat menggunakan setTimeout, requestAnimationFrame, atau library lain yang memungkinkan kita untuk menunda eksekusi sebuah fungsi.
 
-## BEHIND THE SCREEN OF REACT
+## Behind the Scenes of React
 
 React bekerja dengan cara yang cukup unik dibandingkan dengan library atau framework JavaScript lainnya. Berikut adalah cara kerja React dibalik layar secara lengkap:
 
