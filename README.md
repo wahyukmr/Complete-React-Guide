@@ -33,15 +33,15 @@ Perlu diingat, saat menggunakan state scheduling dan batching, kita perlu mengel
 React bekerja dengan cara yang cukup unik dibandingkan dengan library atau framework JavaScript lainnya. Berikut adalah cara kerja React dibalik layar secara lengkap:
 
 ### Gambaran umum:
-1. Komponen: React menggunakan konsep komponen sebagai building blocks dari aplikasi. Komponen adalah sebuah class atau function yang mengembalikan sebuah element HTML yang dapat digunakan kembali di dalam aplikasi.
-2. Virtual DOM: React menggunakan Virtual DOM sebagai mekanisme untuk membuat perubahan pada aplikasi. Virtual DOM adalah representasi dari struktur DOM asli, yang diperbarui secara efisien saat ada perubahan pada aplikasi.
-3. Render Komponen: Ketika sebuah komponen di-render, React akan membuat perbandingan antara Virtual DOM sebelum dan sesudah perubahan, dan hanya akan memperbarui bagian-bagian yang sesungguhnya diperlukan pada DOM asli. Ini membuat perubahan pada aplikasi React menjadi cepat dan efisien.
-4. Props dan State: React menyediakan mekanisme props dan state untuk mengatur data yang digunakan dalam komponen. Props adalah data yang diteruskan ke komponen dari komponen yang mengelompokkannya, sementara state adalah data yang dimiliki oleh komponen itu sendiri.
-5. Event Handling: React menyediakan mekanisme yang disebut event handling untuk menangani interaksi pengguna dengan aplikasi, seperti ketika tombol diklik atau form diisi.
-6. JSX: React menggunakan JSX sebagai syntax ekstensi dari JavaScript yang memungkinkan untuk menulis element HTML dalam JavaScript. JSX dikompilasi menjadi JavaScript oleh transpiler seperti Babel sebelum diterapkan pada browser.
-7. React DOM : adalah salah satu library dari React yang digunakan untuk mengkaitkan komponen-komponen React dengan DOM.
-8. React lifecycle: React menyediakan lifecycle method yang dapat dipakai untuk mengatur saat komponen akan di-mount atau di-unmount, serta saat data komponen diperbarui.
-9. Reusability : React menyediakan kemampuan untuk mereuse komponen sehingga membuat aplikasi terstruktur dan mudah untuk dikelola, serta mempermudah dalam proses pemeliharaan dan pengujian.
+1. <strong>Komponen:</strong> React menggunakan konsep komponen sebagai building blocks dari aplikasi. Komponen adalah sebuah class atau function yang mengembalikan sebuah element HTML yang dapat digunakan kembali di dalam aplikasi.
+2. <strong>Virtual DOM:</strong> React menggunakan Virtual DOM sebagai mekanisme untuk membuat perubahan pada aplikasi. Virtual DOM adalah representasi dari struktur DOM asli, yang diperbarui secara efisien saat ada perubahan pada aplikasi.
+3. <strong>Render Komponen:</strong> Ketika sebuah komponen di-render, React akan membuat perbandingan antara Virtual DOM sebelum dan sesudah perubahan, dan hanya akan memperbarui bagian-bagian yang sesungguhnya diperlukan pada DOM asli. Ini membuat perubahan pada aplikasi React menjadi cepat dan efisien.
+4. <strong>Props dan State:</strong> React menyediakan mekanisme props dan state untuk mengatur data yang digunakan dalam komponen. Props adalah data yang diteruskan ke komponen dari komponen yang mengelompokkannya, sementara state adalah data yang dimiliki oleh komponen itu sendiri.
+5. <strong>Event Handling:</strong> React menyediakan mekanisme yang disebut event handling untuk menangani interaksi pengguna dengan aplikasi, seperti ketika tombol diklik atau form diisi.
+6. <strong>JSX:</strong> React menggunakan JSX sebagai syntax ekstensi dari JavaScript yang memungkinkan untuk menulis element HTML dalam JavaScript. JSX dikompilasi menjadi JavaScript oleh transpiler seperti Babel sebelum diterapkan pada browser.
+7. <strong>React DOM:</strong> adalah salah satu library dari React yang digunakan untuk mengkaitkan komponen-komponen React dengan DOM.
+8. <strong>React lifecycle:</strong> React menyediakan lifecycle method yang dapat dipakai untuk mengatur saat komponen akan di-mount atau di-unmount, serta saat data komponen diperbarui.
+9. <strong>Reusability:</strong> React menyediakan kemampuan untuk mereuse komponen sehingga membuat aplikasi terstruktur dan mudah untuk dikelola, serta mempermudah dalam proses pemeliharaan dan pengujian.
 
 ### Gambaran singkat:
 -   Di React bekerja dengan komponen, biasanya dengan "komponen fungsi" dalam React modern, komponen tersebut mengembalikan kode JSX.
