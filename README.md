@@ -1,27 +1,69 @@
-## Functional Component and Class-based Component
+## Komunikasi React ke Backend bukan ke Database secara langsung
 
-### Functional Component
+Aplikasi kita tidak boleh terhubung langsung dengan server database, karena itu akan mengekspose Database credentials di browser yang bisa dibaca oleh user. Selain itu juga dapat menimbulkan masalah lain seperti masalah performa, tapi masalah keamanan adalah masalah terbesar dari semuanya.
 
--   Komponennya adalah fungsi Javascript reguler yang mengembalikan hasil yang dapat dirender (biasanya JSX).
--   Merupakan pendekatan default dan pendekatan paling modern.
--   Penggunaan React hooks bisa diterapkan pada Functional Component.
+<br />
 
-### Class-based Component
+## Firebase
 
--   Komponennya juga dapat didefinisikan sebagai kelas JS dimana metode render() menentukan output yang akan dirender.
--   Digunakan pada masa lampau.
--   Class-based Component tidak dapat menggunakan React hooks.
+Firebase adalah platform pengembangan aplikasi yang dikembangkan oleh Google. Firebase memudahkan pengembang untuk membangun aplikasi dengan cepat tanpa harus memikirkan infrastruktur backend. Fitur-fitur Firebase meliputi:
 
-Penggunaannya tergantung preferensi pribadi. Class based component dapat bekerja sama dengan Functional component, namun pada kenyataannya kita kemungkinan besar hanya berpegang pada functional component atau class based component, meskipun bisa untuk mencampur dan mencocokkannya.
+1. <strong>Realtime Database:</strong> database NoSQL yang dapat digunakan untuk menyimpan dan memantau data dalam waktu real.
 
-## Class-based Component lifecycle
+2. <strong>Cloud Firestore:</strong> database dokument-oriented yang dapat digunakan untuk menyimpan dan memantau data dalam skala besar.
 
-- Seperti Yang disebutkan diatas, pada Class-based Component tidak dapat menggunakan React hook. Sebagai gantinya, Class-based Component menggunakan method lifecycle:
-    1. componentDidMount() method: dipanggil saat komponen di pasang, jadi ketika dirender dan dievaluasi. Pada dasarnya sama dengan useEffect dengan tanpa dependensi.
-    2. componentDidUpdate() method: dipanggil setelah komponen diperbarui, jadi ketika state berubah dan komponen dievaluasi ulang dan dirender ulang. Pada dasarnya sama dengan useEffect dengan beberapa dependensi.
-    3. componentWillUnmount() method: dipanggil tepat sebelum komponen dihapus dari DOM. Pada dasarnya sama dengan useEffect clean up function.
-    
-    ## Error boundaries
-    
-    - Error boundaries adalah komponen React yang memungkinkan untuk menangani dan menampilkan pesan error pada komponen anak yang gagal dalam render. Ini membantu untuk memastikan bahwa sebagian dari aplikasi tetap berfungsi meskipun ada bagian yang gagal dan memberikan tampilan yang baik untuk pesan error pada bagian yang gagal. Error boundaries dapat dibuat menggunakan konsep lifecycle method "componentDidCatch" pada komponen React.
-    - Ide dibalik Error boundaries adalah kita dapat memastikan bahwa seluruh aplikasi tidak macet jika terjadi kesalahan, kita dapat menangkap kesalahan tersebut dan kemudian menanganinya sama seperti melakukan dengan try catch dalam regular JavaScript. Jika ingin menambahkan method ini, kita saat ini hanya bisa membangunnya menggunakan class-based component.
+3. <strong>Authentication:</strong> memungkinkan pengembang untuk menambahkan autentikasi pada aplikasi mereka, seperti masuk dengan akun Google atau melalui email dan password.
+
+4. <strong>Storage:</strong> penyimpanan file di cloud yang dapat digunakan untuk menyimpan gambar, video, dan file lainnya.
+
+5. <strong>Hosting:</strong> hosting web statis yang dapat digunakan untuk membuat dan menjalankan aplikasi web.
+
+6. <strong>Functions:</strong> perpustakaan JavaScript yang dapat digunakan untuk menjalankan kode server-side.
+
+7. <strong>ML Kit:</strong> kit pengembangan mesin learning yang memungkinkan pengembang untuk menambahkan fitur mesin learning ke aplikasi mereka.
+
+Firebase dapat digunakan dengan berbagai platform, seperti Android, iOS, dan web, dan dapat digunakan secara gratis atau dengan pembelian paket berbayar untuk fitur tambahan dan kapasitas yang lebih besar.
+
+<br />
+
+## HTTP Requests
+<strong>HTTP Request</strong> adalah permintaan yang dikirimkan oleh client ke server melalui protokol HTTP (Hypertext Transfer Protocol). Ini digunakan untuk meminta sumber daya seperti halaman web, gambar, video, dll. dari server.
+
+Setiap permintaan HTTP terdiri dari beberapa bagian, termasuk:
+
+- <strong>Metode:</strong> menentukan tindakan yang harus dilakukan oleh server, seperti mendapatkan sumber daya (GET), membuat data/objek baru (POST), memperbarui data/objek (PUT), dan menghapus data/objek (DELETE).
+
+- <strong>URI (Uniform Resource Identifier):</strong> menentukan sumber daya yang diminta.
+
+- <strong>Header:</strong> mengandung informasi tambahan tentang permintaan, seperti jenis konten yang diinginkan, informasi autentikasi, dll.
+
+- <strong>Body:</strong> mengandung data yang dikirimkan bersama permintaan, seperti form data atau JSON.
+
+Setelah server menerima permintaan HTTP, ia akan memproses permintaan dan mengirimkan HTTP Response, yang berisi status code, header, dan data.
+
+Permintaan HTTP digunakan oleh banyak aplikasi web dan mobile untuk mengirim dan menerima data dari server. Protokol HTTP adalah bagian dari teknologi dasar yang menjadi fondasi dari World Wide Web.
+
+<br />
+
+## Status Codes
+<strong>Status code</strong> adalah sebuah kode numerik yang dikembalikan oleh server ketika memproses permintaan HTTP (Hypertext Transfer Protocol). Ini memberikan informasi tentang apakah permintaan tersebut berhasil diproses atau tidak.
+
+Berikut adalah beberapa status code yang paling umum:
+
+- <strong>200 OK:</strong> Indikasi bahwa permintaan berhasil diproses dan respon berisi data yang diminta.
+
+- <strong>201 Created:</strong> Indikasi bahwa permintaan berhasil diproses dan suatu entitas baru berhasil dibuat.
+
+- <strong>204 No Content:</strong> Indikasi bahwa permintaan berhasil diproses, tetapi tidak ada respon yang dikembalikan.
+
+- <strong>400 Bad Request:</strong> Indikasi bahwa permintaan tidak valid dan tidak dapat diproses oleh server.
+
+- <strong>401 Unauthorized:</strong> Indikasi bahwa permintaan membutuhkan autentikasi dan autentikasi tidak berhasil.
+
+- <strong>403 Forbidden:</strong> Indikasi bahwa akses ke sumber daya ditolak oleh server.
+
+- <strong>404 Not Found:</strong> Indikasi bahwa sumber daya yang diminta tidak ditemukan.
+
+- <strong>500 Internal Server Error:</strong> Indikasi bahwa server mengalami masalah saat memproses permintaan.
+
+Ini hanya beberapa status code dari banyak status code yang ada. Status code membantu menentukan bagaimana aplikasi harus merespon suatu permintaan dan memecahkan masalah jika terjadi kesalahan.
