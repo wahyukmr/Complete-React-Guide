@@ -38,19 +38,21 @@ Selain itu, juga dapat menggunakan Fragment dengan memberikan sebuah kunci (key)
             </>
         );
     }
+    
+<br />
 
 ## Portals
 
 Portal adalah fitur React yang memungkinkan untuk menampilkan konten di luar elemen DOM yang sedang di-render oleh aplikasi React. Ini berguna ketika ingin menambahkan konten ke DOM yang tidak secara langsung terkait dengan komponen React, atau ketika Anda ingin memisahkan konten yang di-render oleh aplikasi React dari struktur DOM yang ada.
 
-Untuk menggunakan portal, pertama-tama perlu menambahkan elemen DOM tujuan ke dokumen HTML. Kemudian, dapat menggunakan ReactDOM.createPortal() untuk membuat portal yang menghubungkan elemen tujuan
+Untuk menggunakan portal, pertama-tama perlu menambahkan elemen DOM tujuan ke dokumen HTML. Kemudian, dapat menggunakan ReactDOM.createPortal() untuk membuat portal yang menghubungkan elemen tujuan.
+
+<br />
 
 ## Ref
 
 Refs adalah fitur di React yang memungkinkan untuk mengakses elemen DOM atau komponen React secara langsung dari kode JavaScript. Ini berguna ketika ingin mengakses properti atau method dari elemen DOM atau komponen React secara langsung, atau ketika ingin mengubah nilai atau tampilan dari elemen DOM atau komponen React secara langsung.
 
 Untuk menggunakan refs, pertama-tama perlu membuat ref dengan menggunakan React.createRef(). Kemudian, dapat menggunakan ref tersebut untuk mengakses elemen DOM atau komponen React.
-
--   dengan ref kita dapat mengatur koneksi antara elemen HTML yang dirender dan kode JS yang lain
-
--   Pertanyaanya bukankah ref lebih baik dibanding dengan useState? jika ingin membaca nilai dengan cepat dan tidak pernah berencana mengubah apapun penggunaan ref lebih efektif
+-   Dengan ref kita dapat mengatur koneksi antara elemen HTML yang dirender dan kode JS yang lain.
+-   Pertanyaanya bukankah ref lebih baik dibanding dengan useState? jika ingin membaca nilai dengan cepat dan tidak pernah berencana mengubah apapun penggunaan ref lebih efektif.
