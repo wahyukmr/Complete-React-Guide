@@ -1,11 +1,11 @@
 // ******************************************************************************************************
 // Menggunakan useEffect
 // ******************************************************************************************************
-// import React, { useState, useEffect } from "react";
+// import React, { useEffect, useState } from "react";
 
+// import Button from "../UI/Button/Button";
 // import Card from "../UI/Card/Card";
 // import classes from "./Login.module.css";
-// import Button from "../UI/Button/Button";
 
 // function Login(props) {
 //     const [enteredEmail, setEnteredEmail] = useState("");
@@ -14,23 +14,16 @@
 //     const [passwordIsValid, setPasswordIsValid] = useState();
 //     const [formIsValid, setFormIsValid] = useState(false);
 
-//     // ketika useEffect hanya menggunakan satu argumen, ini adalah cara yang valid untuk menggunakannya, meskipun jarang digunakan, ini akan membuat fungsi berjalan saat komponen dipasang / dirender untuk pertama kalinya, tetapi juga untuk setiap pembaruan State / siklus render komponen (akan berjalan setelahnya)
+//     // useEffect(() => {
+//     //     console.log("EFFECT");
 
-//     // Jika ditambahkan dengan dependency array kosong, akan membuat fungsi hanya berjalan sekali saat pertama kali saat komponen dipasang dan dirender
+//     //     // Clean up function / unmounting
+//     //     return () => {
+//     //         console.log("EFFECT CLEAN UP");
+//     //     };
+//     // }, [enteredPassword]); // dependency
 
-//     // Atau jika menambahkan dependency seperti  enteredPassword, akan menjalankan fungsi setiap kali komponen dipasang dan dirender dan setiap kali state (dalam hal ini enteredPassword ) berubah
-
-//     // Kita juga harus membersihkan fungsi, dengan mereturnnya. Clean up function ini berjalan sebelum fungsi ini berjalan secara keseluruhan. Clean up function akan dipicu sebelum fungsi Effect berjalan
-
-//     // Jika memiliki array kosong (tidak ada dependency) hanya akan melihat Effect berjalan satu kali dan Clean up function akan berjalan ketika komponen dihapus dari DOM
-//     useEffect(() => {
-//         console.log("EFFECT");
-
-//         // Clean up function / unmounting
-//         return () => {
-//             console.log("EFFECT CLEAN UP");
-//         };
-//     }, [enteredPassword]); // dependency
+//     console.log("component");
 
 //     useEffect(() => {
 //         // debounce
