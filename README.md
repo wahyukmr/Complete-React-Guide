@@ -19,21 +19,25 @@
     5. Menghandle cleanup: useEffect juga bisa digunakan untuk menangani cleanup saat komponen unmount atau update. Misalnya, menghapus file yang tidak lagi digunakan atau membatalkan request HTTP yang sedang berlangsung.
 
 ### Dependencies
+
 -   Hanya menggunakan satu argumen (tanpa dependencies, ini adalah cara yang valid untuk menggunakannya) meskipun jarang digunakan, ini akan membuat fungsi berjalan saat komponen dipasang / dirender untuk pertama kalinya, tetapi juga untuk setiap pembaruan State / siklus render komponen (akan berjalan setelahnya).
--   Jika ditambahkan dengan dependency (array kosong) akan membuat fungsi hanya berjalan sekali saat pertama kali komponen dipasang atau dirender dan Clean up function akan berjalan ketika komponen dihapus dari DOM.
--   Atau jika menambahkan dependency seperti enteredPassword, akan menjalankan fungsi setiap kali komponen dipasang dan dirender dan setiap kali state (dalam hal ini enteredPassword ) berubah.
+-   Tanpa dependensi -- callback berjalan saat komponen dipasang (dirender ke layar) dan Clean up function akan berjalan ketika komponen dihapus dari DOM.
+-   Dengan dependensi apa pun -- callback akan berjalan saat salah satu nilai dependensi dalam array berubah (juga setelah pemasangan pertama atau setelah dirender pertama kali dilayar).
 -   Kita juga harus membersihkan fungsi, dengan mereturnnya. Clean up function ini berjalan sebelum fungsi ini berjalan secara keseluruhan. Clean up function akan dipicu sebelum fungsi Effect berjalan
 
 ### Hal yang tidak harus ditambahkan dalam Dependencies
+
 -   Kita harus menambahkan "segalanya" yang kita gunakan dalam fungsi Effect sebagai dependensi (yaitu semua variabel State dan fungsi yang digunakan disana). Itu benar tetapi ada pengecualian untuk itu:
     1. Tidak perlu menambahkan State updating functions.
     2. Tidak perlu menambahkan "built-in" APIs atau fungsi, seperti fetch(), LocalStorage, dll (fungsi dan fitur bawaan browser).
     3. Tidak perlu menambahkan variabel atau fungsi yang mungkin telah kita tentukan "di luar" komponen.
 
 ### debounce
+
 -   Di React, debounce adalah teknik yang digunakan untuk mengurangi jumlah pemanggilan suatu fungsi yang dilakukan secara beruntun. Misalnya, jika kita memiliki suatu fungsi yang dipanggil setiap kali pengguna mengetik di kotak pencarian, kita mungkin ingin menggunakan debounce untuk mencegah terlalu banyak pemanggilan fungsi tersebut, terutama jika pemanggilan fungsi tersebut memerlukan waktu yang cukup lama. Dengan menggunakan debounce, kita dapat menunda pemanggilan fungsi tersebut selama periode waktu tertentu, sehingga hanya ada satu pemanggilan fungsi yang dilakukan setelah periode waktu tertentu berlalu tanpa ada pemanggilan fungsi lain yang terjadi.
 
 ### Clean up function / unmounting
+
 -   Clean up function atau sering disebut dengan "unmounting" merupakan bagian dari proses rendering di React. Saat sebuah komponen tidak lagi dibutuhkan, maka komponen tersebut akan dihapus dari DOM. Sebelum komponen tersebut dihapus, React akan memanggil lifecycle method componentWillUnmount(). Clean up function biasanya digunakan untuk membersihkan atau menghapus event listeners atau subscriptions yang mungkin telah ditambahkan sebelumnya pada komponen tersebut.
 -   Contohnya, jika sebuah komponen menambahkan event listener pada DOM saat di-mount (saat sebuah component awalnya di load / dibuat), maka pada saat komponen tersebut di-unmount (saat sebuah component dimusnahkan / dihapus) event listener tersebut harus dihapus agar tidak terjadi memory leak. Jadi, clean up function adalah cara untuk membersihkan atau menghapus semua sisa yang mungkin ditinggalkan oleh sebuah komponen saat komponen tersebut dihapus dari DOM.
 
@@ -43,7 +47,7 @@
 
 -   useReducer adalah hook di React yang membantu mengelola state yang lebih kompleks dan memiliki logika yang lebih rumit daripada useState. useReducer memberikan kontrol yang lebih besar atas bagaimana state berubah dan memungkinkan kita untuk membuat pembaruan state yang dilakukan berdasarkan sekumpulan aksi (actions) yang didefinisikan, seperti yang dilakukan dalam aplikasi yang menggunakan Redux.
 
-- Berikut adalah beberapa situasi di mana useReducer bisa berguna:
+-   Berikut adalah beberapa situasi di mana useReducer bisa berguna:
     1. <strong>Aplikasi dengan state yang rumit:</strong> Jika aplikasi memiliki state yang rumit dan logika yang kompleks untuk mengubah state tersebut, useReducer bisa memberikan solusi yang lebih baik daripada useState.
     2. <strong>Aplikasi dengan banyak interaksi:</strong> Jika aplikasi memiliki banyak interaksi dan update state yang saling berkaitan, useReducer memungkinkan kita untuk memetakan interaksi tersebut ke dalam sekumpulan aksi dan mengelola update state secara lebih efisien.
     3. <strong>Aplikasi dengan banyak komponen:</strong> Jika aplikasi memiliki banyak komponen dan komponen tersebut berbagi state, useReducer memungkinkan kita untuk memetakan state ke sebuah objek global yang bisa diakses oleh banyak komponen.
@@ -52,7 +56,9 @@
 Dalam penggunaan useReducer, kita membuat sebuah reducer function yang menerima state dan aksi sebagai parameter, dan mengembalikan state baru. Kemudian, kita memanggil useReducer dengan reducer function dan state awal sebagai parameter, dan menggunakan state dan dispatch function yang dikembalikan oleh useReducer untuk mengontrol bagaimana state berubah dalam aplikasi. UseReducer juga memiliki kelebihan di bandingkan dengan useState karena useReducer memungkinkan kita untuk mengelola state yang terkait dengan satu sama lain dalam cara yang lebih terstruktur.
 
 -   UseState vs useReducer untuk mengelola state!!
+
     1. useState:
+
         - Untuk mengelola state utama, biasanya kita mulai dengan useState dan seringkali hanya itu yang dibutuhkan.
         - Bagus digunakan untuk bagian independen dari State / data dan State yang sederhana.
         - Bagus jika pembaruan State mudah dan terbatas pada beberapa jenis .pembaruan, tidak memiliki banyak kasus yang berbeda yang akan merubah State.
@@ -70,15 +76,16 @@ Dalam penggunaan useReducer, kita membuat sebuah reducer function yang menerima 
 
 -   useContext Hook di React digunakan untuk membuat komponen yang membutuhkan akses ke context data tanpa harus melalui proses pemasangan melalui props. Ini berguna ketika kita memiliki data yang digunakan oleh banyak komponen dalam aplikasi dan tidak ingin menyebarkan props melalui berbagai tingkat komponen.
 
-- Contohnya, jika kita memiliki tema aplikasi yang digunakan oleh banyak komponen, kita dapat menggunakan useContext untuk membuat context yang menyimpan informasi tema dan mengaksesnya dari setiap komponen yang membutuhkannya. Ini akan membuat kode lebih mudah dikelola dan mempermudah pembaruan tema jika diperlukan.
+-   Contohnya, jika kita memiliki tema aplikasi yang digunakan oleh banyak komponen, kita dapat menggunakan useContext untuk membuat context yang menyimpan informasi tema dan mengaksesnya dari setiap komponen yang membutuhkannya. Ini akan membuat kode lebih mudah dikelola dan mempermudah pembaruan tema jika diperlukan.
 
-- Penggunaan useContext juga berguna ketika kita memiliki data yang harus dibagikan antara komponen-komponen yang tidak berhubungan secara langsung. Dalam hal ini, kita dapat membuat context dan mengakses data yang dibutuhkan oleh komponen-komponen tersebut, tanpa harus melalui proses penyebaran props yang panjang.
+-   Penggunaan useContext juga berguna ketika kita memiliki data yang harus dibagikan antara komponen-komponen yang tidak berhubungan secara langsung. Dalam hal ini, kita dapat membuat context dan mengakses data yang dibutuhkan oleh komponen-komponen tersebut, tanpa harus melalui proses penyebaran props yang panjang.
 
-- Secara keseluruhan, useContext berguna untuk membuat aplikasi lebih mudah dikelola dan mempermudah pembaruan data yang dibagikan antar komponen.
+-   Secara keseluruhan, useContext berguna untuk membuat aplikasi lebih mudah dikelola dan mempermudah pembaruan data yang dibagikan antar komponen.
 
 -   Untuk menggunakan Context Provider, pertama-tama harus membuat context dengan menggunakan React.createContext() . Ini akan mengembalikan sebuah objek yang memiliki dua properti: Provider dan Consumer.
-    1.   Provider digunakan untuk menetapkan nilai yang akan digunakan oleh Consumer. Nilai ini dapat diubah setiap saat dengan menggunakan value prop pada Provider.
-    2.   Consumer digunakan untuk mengakses nilai yang ditetapkan oleh Provider / nilai default. Ini harus ditempatkan di dalam elemen JSX yang ingin mengakses nilai tersebut, dan harus diikat dengan sebuah fungsi yang menerima nilai sebagai argumen.
+
+    1.  Provider digunakan untuk menetapkan nilai yang akan digunakan oleh Consumer. Nilai ini dapat diubah setiap saat dengan menggunakan value prop pada Provider.
+    2.  Consumer digunakan untuk mengakses nilai yang ditetapkan oleh Provider / nilai default. Ini harus ditempatkan di dalam elemen JSX yang ingin mengakses nilai tersebut, dan harus diikat dengan sebuah fungsi yang menerima nilai sebagai argumen.
 
 -   kita dapat melakukan Listener dengan menggunakan Consumer atau dengan React hook, biasanya kita menggunakan React hook dan Consumer sebagai alternatif lain.
 
@@ -103,7 +110,7 @@ Dalam penggunaan useReducer, kita membuat sebuah reducer function yang menerima 
 
 -   Ref juga dapat digunakan untuk menyimpan nilai yang tidak diubah selama re-rendering komponen. Misalnya, jika kita memiliki sebuah counter yang di-update setiap kali tombol diklik, kita dapat menggunakan ref untuk menyimpan nilai counter agar tidak hilang setelah setiap re-render.
 
-- useRef bisa berguna dalam berbagai situasi, di antaranya:
+-   useRef bisa berguna dalam berbagai situasi, di antaranya:
     1. <strong>Mengakses elemen DOM:</strong> Kita dapat menggunakan useRef untuk menyimpan referensi ke elemen DOM seperti input, canvas, atau video, dan kemudian menggunakan referensi tersebut untuk memodifikasi elemen tersebut (misalnya, memfokuskan input, mengambil screenshot dari canvas, atau memutar video).
     2. <strong>Menyimpan nilai yang tidak berubah:</strong> useRef juga bisa digunakan untuk menyimpan sebuah nilai yang tidak berubah selama render ulang komponen, seperti referensi ke objek JavaScript atau hasil dari sebuah operasi kompleks.
     3. <strong>Menyimpan state dalam komponen class:</strong> useRef dapat digunakan sebagai pengganti this.state dalam komponen class. Ini berguna saat kita ingin menyimpan sebuah nilai yang tidak mempengaruhi render ulang komponen.
@@ -114,9 +121,9 @@ Dalam penggunaan useReducer, kita membuat sebuah reducer function yang menerima 
 
 ## React forwardRef
 
-- React.forwardRef adalah sebuah fitur di React yang memungkinkan kita untuk membuat komponen referensi. Komponen referensi adalah komponen yang memungkinkan akses ke elemen DOM yang mewakilinya melalui sebuah referensi.
+-   React.forwardRef adalah sebuah fitur di React yang memungkinkan kita untuk membuat komponen referensi. Komponen referensi adalah komponen yang memungkinkan akses ke elemen DOM yang mewakilinya melalui sebuah referensi.
 
-- React.forwardRef berguna dalam beberapa situasi, seperti:
+-   React.forwardRef berguna dalam beberapa situasi, seperti:
     1. <strong>Membuat komponen dengan API eksternal:</strong> React.forwardRef memungkinkan kita untuk membuat API eksternal pada komponen yang dapat diakses oleh komponen lain. Misalnya, jika kita membuat modal, kita dapat membuat API untuk membuka dan menutup modal yang dapat diakses oleh komponen lain.
     2. <strong>Mengakses elemen DOM secara langsung:</strong> React.forwardRef memungkinkan kita untuk mengakses elemen DOM secara langsung melalui sebuah referensi. Ini berguna jika kita ingin mengatur perilaku elemen DOM secara langsung dari komponen React.
     3. <strong>Memodifikasi perilaku komponen:</strong> React.forwardRef memungkinkan kita untuk memodifikasi perilaku komponen yang tidak dapat diakses langsung dari komponen utama. Ini berguna ketika kita ingin membuat API eksternal pada komponen yang dapat diakses oleh komponen lain.
@@ -127,6 +134,6 @@ Secara keseluruhan, React.forwardRef membuat aplikasi React lebih mudah dikemban
 
 -   Hook useImperativeHandle adalah sebuah hook React yang berguna untuk memodifikasi objek handle yang dikembalikan oleh forwardRef ketika digunakan bersama dengan sebuah komponen dasar. Hal ini berguna jika kita ingin memberikan akses ke method atau properti tertentu dari sebuah komponen dasar ke komponen yang membungkusnya (wrapper component) atau ke komponent induknya.
 
-- Ini adalah sesuat yang jarang terjadi, jangan sering menggunakan dalam proyek. Jadikan sebagai alternative lain.
+-   Ini adalah sesuat yang jarang terjadi, jangan sering menggunakan dalam proyek. Jadikan sebagai alternative lain.
 
 -   Perhatikan bahwa "useImperativeHandle" harus digunakan bersama dengan "forwardRef", dan hanya boleh digunakan pada komponen yang menerima "ref" sebagai argumen. Juga, "useImperativeHandle" hanya harus digunakan jika kita benar-benar perlu memberikan akses ke method atau properti tertentu dari komponen dasar ke wrapper component, karena ini dapat membuat kode lebih sulit dipahami dan di-debug.
