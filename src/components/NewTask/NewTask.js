@@ -6,9 +6,9 @@ import TaskForm from "./TaskForm";
 const NewTask = (props) => {
     const { isLoading, error, sendRequest: sendTaskRequest } = useHTTP();
 
-    const createdTasks = (taskText, taskData) => {
+    const createdTasks = (textFromInput, taskData) => {
         const generatedId = taskData.name; // firebase-specific => "name" contains generated id
-        const createdTask = { id: generatedId, text: taskText };
+        const createdTask = { id: generatedId, text: textFromInput };
 
         props.onAddTask(createdTask);
     };
@@ -23,7 +23,7 @@ const NewTask = (props) => {
                     "Content-Type": "application/json",
                 },
             },
-            // Argument kedua yang diberikan ke method bind akan menjadi argument pertama yang diterima fungsi
+            // Argument kedua yang diberikan ke method bind akan menjadi argument pertama yang diterima fungsi createdTasks
             createdTasks.bind(null, textFromInput)
         );
     };
