@@ -1,5 +1,5 @@
-## Getting user input values (useState or useRef)
+Mengimplementasikan:
 
-Untuk mendapatkan nilai yang dimasukkan user dapat menggunakan dua pendekatan yang berbeda, bisa menggunakan useState atau useRef. Tentu saja harus menggunakan salah satu dari pendekatan tersebut, Sekarang bagaimana untuk memutuskan mana yang akan digunakan? itu tergantung apa yang akan kita rencanakan dengan nilai yang dimasukkan user tersebut.
-    - <strong>Jika kita tertarik hanya sekali pada saat form disubmit</strong>, Pendekatan menggunakan ref lebih baik Karena mencatat dan memperbarui nilai state dengan setiap penekanan tombol agak berlebihan.
-    _ Namun, jika membutuhkan <strong>nilai yang dimasukkan user setelah setiap penekanan tombol</strong> misalnya untuk validasi instan, Atau ketika ingin mengatur ulang nilai input maka menggunakan useState lebih baik karena dengan ref kita tidak bisa melakukannya.  
+-   <strong>Mengirim HTTP Requests</strong>, POST dan GET untuk mengirim dan mendapatkan data dari backend.
+-   <strong>Menerapkan Custom Hook</strong>, untuk mengelola state dan efek pada aplikasi dengan tujuan membungkus logic dan dapat digunakan pada komponen yang membutuhkan logic yang sama.
+-   <strong>bekerja dengan forms</strong>, mengelola dan melakukan validasi user input.
