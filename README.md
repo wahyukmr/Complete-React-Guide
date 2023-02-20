@@ -66,3 +66,11 @@ Redux dapat digunakan dalam proyek JavaScript apapun, Namun sayangnya tidak berl
         
         npm install redux react-redux
         
+
+## connect in redux
+
+Connect pada Redux adalah sebuah fungsi yang berguna untuk menghubungkan state dan action creator Redux ke komponen React. Fungsi ini memungkinkan komponen React untuk mengakses state dan action creator yang diimplementasikan dalam store Redux, sehingga memungkinkan penggunaan data state dan melakukan dispatch aksi untuk mengubah data state.
+
+Fungsi connect() menerima dua argumen yaitu mapStateToProps dan mapDispatchToProps. mapStateToProps adalah sebuah fungsi yang menerima state sebagai argumen dan mengembalikan objek yang berisi properti-properti yang akan dipetakan ke dalam props pada komponen. Sedangkan mapDispatchToProps adalah sebuah fungsi yang menerima dispatch sebagai argumen dan mengembalikan objek yang berisi fungsi-fungsi action creator yang akan dipetakan ke dalam props pada komponen.
+
+Dengan menggunakan connect(), komponen React dapat memperoleh akses ke state dan action creator Redux dengan cara memetakan properti pada objek props. Selain itu, ketika ada perubahan pada state, komponen React yang terhubung dengan store Redux juga akan secara otomatis mendapatkan pembaruan data.
