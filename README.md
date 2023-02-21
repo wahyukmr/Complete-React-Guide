@@ -74,3 +74,9 @@ Connect pada Redux adalah sebuah fungsi yang berguna untuk menghubungkan state d
 Fungsi connect() menerima dua argumen yaitu mapStateToProps dan mapDispatchToProps. mapStateToProps adalah sebuah fungsi yang menerima state sebagai argumen dan mengembalikan objek yang berisi properti-properti yang akan dipetakan ke dalam props pada komponen. Sedangkan mapDispatchToProps adalah sebuah fungsi yang menerima dispatch sebagai argumen dan mengembalikan objek yang berisi fungsi-fungsi action creator yang akan dipetakan ke dalam props pada komponen.
 
 Dengan menggunakan connect(), komponen React dapat memperoleh akses ke state dan action creator Redux dengan cara memetakan properti pada objek props. Selain itu, ketika ada perubahan pada state, komponen React yang terhubung dengan store Redux juga akan secara otomatis mendapatkan pembaruan data.
+
+## Redux Toolkit
+
+Semakin komplek aplikasi akan membuat penggunakan redux menjadi semakin sulit untuk dikelola, kesalahan atau bug pun berpotensi tinggi bisa terjadi. Seperti halnya kesalahan kecil (Typo) ketidaksamaan penulisan property "type" misalnya atau semkin komplek aplikasi semakin banyak pula state atau action yang dibuat, yang berarti harus mengembalikan seluruh properti yang dimiliki jika ingin memperbarui data.
+
+Toolkit sebagai Package tambahan yang membuat bekerja dengan Redux menjadi lebih nyaman dan mudah. Tidak perlu harus menggunakannya, tetapi jika menggunakannya hal-hal tertentu akan menjadi lebih mudah. Ketika menginstallnya, kita dapat uninstall / menghapus library Redux dari Package.json, Karena itu sudah termasuk kedalam Redux Toolkit.
