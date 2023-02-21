@@ -4,26 +4,30 @@ import classes from "./Counter.module.css";
 
 const Counter = () => {
     const dispatch = useDispatch();
-    const counters = useSelector((state) => state.counter);
+    const counter = useSelector((state) => state.counter);
+    const showCounter = useSelector((state) => state.showCounter);
 
     const incrementHandler = () => {
         dispatch({ type: "increment", amount: 1 });
     };
-    
-    const increaseHandler= () => {
+
+    const increaseHandler = () => {
         dispatch({ type: "increment", amount: 5 });
-    }
+    };
 
     const decrementHandler = () => {
         dispatch({ type: "decrement" });
     };
 
-    const toggleCounterHandler = () => {};
+    const toggleCounterHandler = () => {
+        dispatch({ type: "toggle" });
+    };
 
+    // Counter hanya digunakan untuk komponen ini saja (local State), namun kita asumsikan Counter sebagai global State yang dapat digunakan oleh banyak komponent
     return (
         <main className={classes.counter}>
             <h1>Redux Counter</h1>
-            <div className={classes.value}>{counters}</div>
+            {showCounter && <div className={classes.value}>{counter}</div>}
             <div>
                 <button onClick={incrementHandler}>Increment</button>
                 <button onClick={increaseHandler}>Increase by 5</button>
