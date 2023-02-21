@@ -4,7 +4,8 @@ import { legacy_createStore as createStore } from "redux";
 const counterReducer = (state = { counter: 0 }, action) => {
     if (action.type === "increment") {
         return {
-            counter: state.counter + 1,
+            // Property yang diakses action di reducer (amount) harus memiliki nama yang sama persis dengan property yang ditambahkan ke action saat mengirimkannya
+            counter: state.counter + action.amount,
         };
     }
     if (action.type === "decrement") {
