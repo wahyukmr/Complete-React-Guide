@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-
+import { counterActions } from "../store";
 import classes from "./Counter.module.css";
 
 const Counter = () => {
@@ -8,19 +8,20 @@ const Counter = () => {
     const showCounter = useSelector((state) => state.showCounter);
 
     const incrementHandler = () => {
-        dispatch({ type: "increment", amount: 1 });
+        // Nilai apapun yang diberikan disini sebagai argument untuk method actions, akan disimpan dalam bidang tambahan bernama "payload"
+        dispatch(counterActions.increment(1)); // {type: SOME_UNIQUE_IDENTIFIER, payload: 1}
     };
 
     const increaseHandler = () => {
-        dispatch({ type: "increment", amount: 5 });
+        dispatch(counterActions.increment(5)); // {type: SOME_UNIQUE_IDENTIFIER, payload: 5}
     };
 
     const decrementHandler = () => {
-        dispatch({ type: "decrement" });
+        dispatch(counterActions.decrement());
     };
 
     const toggleCounterHandler = () => {
-        dispatch({ type: "toggle" });
+        dispatch(counterActions.toggle());
     };
 
     // Counter hanya digunakan untuk komponen ini saja (local State), namun kita asumsikan Counter sebagai global State yang dapat digunakan oleh banyak komponent

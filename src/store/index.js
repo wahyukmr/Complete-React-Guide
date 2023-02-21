@@ -8,7 +8,7 @@ const counterSlice = createSlice({
     initialState,
     reducers: {
         increment(state, action) {
-            state.counter += action.amount;
+            state.counter += action.payload;
         },
         decrement(state) {
             state.counter--;
@@ -22,5 +22,9 @@ const counterSlice = createSlice({
 const stateStorage = configureStore({
     reducer: counterSlice.reducer,
 });
+
+// Method pada objek actions disini, yang akan kita panggil akan mmebuat objek actions untuk kita dimana objek ini sudah mwmiliki property "type" dengan pengenal unik per actions secara otomatis dibuat dibelakang layar.
+// Sehingga dengan adanya ini kita tidak perlu khawatir tentang membuat objek actions sendiri dan membuat pengenal unik serta menghindari kesalahan ketik (typo)
+export const counterActions = counterSlice.actions;
 
 export default stateStorage;
