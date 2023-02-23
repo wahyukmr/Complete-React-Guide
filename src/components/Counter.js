@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { counterActions } from "../store";
+import { counterActions } from "../store/counter-slice";
 import classes from "./Counter.module.css";
 
 const Counter = () => {
     const dispatch = useDispatch();
-    const counter = useSelector((state) => state.counter);
-    const showCounter = useSelector((state) => state.showCounter);
+    const counter = useSelector((state) => state.counters.counter);
+    const showCounter = useSelector((state) => state.counters.showCounter);
 
     const incrementHandler = () => {
         // Nilai apapun yang diberikan disini sebagai argument untuk method actions, akan disimpan dalam bidang tambahan bernama "payload"

@@ -1,30 +1,10 @@
-// configureStore: seperti createStore, tetapi itu membuat penggabungan multiple reducer menjadi satu reducer. Meneruskan sebuah objek bukan fungsi reducer
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import authSlice from "./auth-slice";
+import counterSlice from "./counter-slice";
 
-const initialState = { counter: 0, showCounter: true };
-
-const counterSlice = createSlice({
-    name: "counter",
-    initialState,
-    reducers: {
-        increment(state, action) {
-            state.counter += action.payload;
-        },
-        decrement(state) {
-            state.counter--;
-        },
-        toggle(state) {
-            state.showCounter = !state.showCounter;
-        },
-    },
+// Jika bekerja dengan banyak slice, kita masih hanya memiliki satu penyimpanan Redux, jadi masih hanya memanggil configureStore sekali dan di store (stateStorage) hanya memiliki satu reducer
+const store = configureStore({
+    reducer: { counters: counterSlice, auth: authSlice },
 });
 
-const stateStorage = configureStore({
-    reducer: counterSlice.reducer,
-});
-
-// Method pada objek actions disini, yang akan kita panggil akan mmebuat objek actions untuk kita dimana objek ini sudah mwmiliki property "type" dengan pengenal unik per actions secara otomatis dibuat dibelakang layar.
-// Sehingga dengan adanya ini kita tidak perlu khawatir tentang membuat objek actions sendiri dan membuat pengenal unik serta menghindari kesalahan ketik (typo)
-export const counterActions = counterSlice.actions;
-
-export default stateStorage;
+export default store;
