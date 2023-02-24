@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authSlice from "./auth-slice";
-import counterSlice from "./counter-slice";
 
-// Jika bekerja dengan banyak slice, kita masih hanya memiliki satu penyimpanan Redux, jadi masih hanya memanggil configureStore sekali dan di store (stateStorage) hanya memiliki satu reducer
+import cartSlice from "./cart-slice";
+import uiSlice from "./ui-slice";
+
 const store = configureStore({
-    reducer: { counters: counterSlice, auth: authSlice },
+    reducer: { ui: uiSlice, cart: cartSlice },
 });
 
 export default store;
