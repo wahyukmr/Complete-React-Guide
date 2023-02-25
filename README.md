@@ -18,6 +18,8 @@ Kita memiliki dua kemungkinan tempat dimana dapat menempatkan side-effect:
 
 2. Meletakkannya ke dalam action creators, jadi menulis action ceators kita sendiri tanpa menggunakan yang dihasilkan secara otomatis oleh redux toolkit.
 
+Dengan redux toolkit tidak hanya menerima action objek dengan properti type, tetapi juga menerima actions creator yang mengembalikan fungsi. Tidak begitu buruk jika ingin menempatkan semua logic pada komponen, namun jika ingin membuat komponen yang ramping dapat mempertimbangkan untuk mengguakan action creators.
+
 ## Fat Reducers Vs Fat Components Vs Fat Actions
 
 Dimana sebaiknya logic (code) kita berada?

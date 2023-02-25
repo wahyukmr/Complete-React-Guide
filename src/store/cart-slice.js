@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { uiActions } from "./ui-slice";
 
 const cartSlice = createSlice({
     name: "cart",
@@ -43,6 +44,50 @@ const cartSlice = createSlice({
         },
     },
 });
+
+// Membuat actions creator function (membuat fungsi yang mengembalikan fungsi lain)
+export const sendCartData = (cart) => {
+    return async (dispatch) => {
+        dispatch(
+            uiActions.showNotifications({
+                status: "pending",
+                title: "Sending...",
+                message: "Sending cart data",
+            })
+        );
+
+        const sendRequest = async () => {
+            const response = await fetch(
+                "https://react-project1-4c0ab-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json",
+                { method: "PUT", body: JSON.stringify(cart) }
+            );
+
+            if (!response.ok) {
+                throw new Error("Sending data to cart failed");
+            }
+        };
+
+        try {
+            await sendRequest();
+
+            dispatch(
+                uiActions.showNotifications({
+                    status: "success",
+                    title: "Successful!",
+                    message: "Send cart data successfully",
+                })
+            );
+        } catch (error) {
+            dispatch(
+                uiActions.showNotifications({
+                    status: "error",
+                    title: "Failed!",
+                    message: "Send cart data failed",
+                })
+            );
+        }
+    };
+};
 
 export const cartActions = cartSlice.actions;
 
