@@ -8,7 +8,7 @@ const ProductItem = (props) => {
 
     const { title, price, description, id } = props;
 
-    const addItemHandler = () => {
+    const addToCartHandler = () => {
         dispatch(
             cartActions.addItemToCart({
                 id,
@@ -27,7 +27,7 @@ const ProductItem = (props) => {
                 </header>
                 <p>{description}</p>
                 <div className={classes.actions}>
-                    <button onClick={addItemHandler}>Add to Cart</button>
+                    <button onClick={addToCartHandler}>Add to Cart</button>
                 </div>
             </Card>
         </li>
