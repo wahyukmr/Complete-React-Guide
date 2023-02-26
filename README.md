@@ -32,3 +32,15 @@ Dimana sebaiknya logic (code) kita berada?
 2. Kode berupa Asynchronous function atau dengan side-effects
     - Lebih baik di Action Creators atau Komponen.
     - Jangan pernah menggunakan Reducers.
+
+## Redux DevTools
+
+Redux DevTools adalah sebuah alat pengembangan (development tool) untuk memudahkan pengembang aplikasi web yang menggunakan Redux untuk mengelola state pada aplikasi mereka. Redux DevTools dapat membantu dalam memantau dan memperbaiki bug pada aplikasi yang menggunakan Redux dengan menyediakan fitur-fitur seperti time travel debugging, recording, dan debugging actions.
+
+Beberapa fitur yang tersedia pada Redux DevTools antara lain:
+
+-   Time Travel Debugging: Fitur ini memungkinkan pengembang untuk melihat perubahan pada state aplikasi pada setiap langkah dalam waktu, seperti pada saat aplikasi menjalankan sebuah action. Dengan Time Travel Debugging, pengembang dapat dengan mudah melacak bagaimana sebuah action mempengaruhi state aplikasi secara keseluruhan.
+
+-   Recording: Fitur ini memungkinkan pengembang untuk merekam seluruh perubahan yang terjadi pada state aplikasi selama penggunaan aplikasi. Dengan Recording, pengembang dapat memantau setiap perubahan pada state aplikasi, sehingga memudahkan dalam memperbaiki bug pada aplikasi.
+
+-   Debugging Actions: Fitur ini memungkinkan pengembang untuk memantau setiap action yang dijalankan pada aplikasi. Dengan Debugging Actions, pengembang dapat melihat action mana yang menyebabkan perubahan pada state aplikasi dan dapat memperbaiki bug dengan cepat.
