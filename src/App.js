@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/Error";
 import HomePage from "./pages/Home";
+import ProductDetailPage from "./pages/ProductDetail";
 import ProductPage from "./pages/Products";
 import RootLayout from "./pages/Root";
 
@@ -13,6 +14,8 @@ const routers = createBrowserRouter([
         children: [
             { path: "/", element: <HomePage /> },
             { path: "/products", element: <ProductPage /> },
+            // Menambahakan Dynamic Segments
+            { path: "/products/:productId", element: <ProductDetailPage /> },
         ],
     },
 ]);
