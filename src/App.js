@@ -11,24 +11,12 @@ const routers = createBrowserRouter([
         element: <RootLayout />,
         errorElement: <ErrorPage />,
         children: [
-            // Jika path yang dimulai dengan slash atau garis miring didepannya maka itu adalah absolute path, yang berarti mereka akan langsung ditambahkan setelah nama domain, bukan setelah path yang sedang aktif.
-            { path: "", element: <HomePage /> },
+            // "root index" yang berarti route ini adalah route default yang harus dimuat jika parent route path aktif. Merupakan alternatif untuk menambahkan path kosong.
+            { index: true, element: <HomePage /> }, // path: ""
             { path: "products", element: <ProductPage /> },
-            // route ini yang bertanggungjawab atas product detail adalah anak langsung dari root route, bukan products route.
             { path: "products/:productId", element: <ProductDetailPage /> },
         ],
     },
-    // {
-    //     path: "/root",
-    //     element: <RootLayout />,
-    //     errorElement: <ErrorPage />,
-    //     children: [
-    //         // jika memiliki child route dengan relative path (tanpa diawali slash atau garis miring) maka react router akan secara default menambahkan path itu setelah route path yang sedang aktif.
-    //         { path: "", element: <HomePage /> },
-    //         { path: "products", element: <ProductPage /> },
-    //         { path: "products/:productId", element: <ProductDetailPage /> },
-    //     ],
-    // },
 ]);
 
 function App() {
