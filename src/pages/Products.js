@@ -13,9 +13,8 @@ function ProductPage() {
             <ul>
                 {PRODUCTS.map((product) => (
                     <li key={product.id}>
-                        <Link to={`/products/${product.id}`}>
-                            {product.title}
-                        </Link>
+                        {/* Ketika menggunakan komponen Link, juga memiliki props relative yang dapat ditambahkan dan bisa di set ke path atau route. Dengan itu dapat mengontrol apakah segment ini ditambahkan relatif ke route path aktif atau ke path yang sedang aktif di URL. */}
+                        <Link to={product.id}>{product.title}</Link>
                     </li>
                 ))}
             </ul>

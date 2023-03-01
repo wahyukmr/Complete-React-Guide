@@ -5,14 +5,14 @@ function HomePage() {
     const navigate = useNavigate();
 
     function navigateHandler() {
-        navigate("/products");
+        navigate("products");
     }
 
     return (
         <>
             <h1>My Home Page</h1>
             <p>
-                Go to <Link to="/products">products</Link>
+                Go to <Link to="products">products</Link>
             </p>
             <p>
                 {/* ini hanya contoh, jangan membuat tombol dan kemudian menavigasi secara terprogram. Cukup gunakan Link saja */}
