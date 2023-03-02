@@ -1,22 +1,20 @@
-import { Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import EventsList from "../components/EventsList";
 
-const EVENTS = [
-    { id: "e1", title: "Event 1" },
-    { id: "e2", title: "Event 2" },
-    { id: "e3", title: "Event 3" },
-];
+export function EventsPage() {
+    const dataEvents = useLoaderData(); // Using data from loader
 
-export default function EventsPage() {
-    return (
-        <>
-            <h1>Event page!</h1>
-            <ul>
-                {EVENTS.map((event) => (
-                    <li key={event.id}>
-                        <Link to={event.id}>{event.title}</Link>
-                    </li>
-                ))}
-            </ul>
-        </>
-    );
+    return <EventsList events={dataEvents} />;
+}
+
+// Menempatkan kode loader pada file komponen yang membutuhkannya.
+export async function fetchingEvents() {
+    const response = await fetch("http://localhost:8080/events");
+
+    if (!response.ok) {
+        // setError("Fetching events failed.");
+    } else {
+        const resData = await response.json();
+        return resData.events; // Data event ini akan tersedia untuk komponen EventPage dan komponen lain yang memerlukannya. Setiap menggunakan async await data yang direturn akan mengembalikan sebuah promise.
+    }
 }
