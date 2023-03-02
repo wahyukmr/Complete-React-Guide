@@ -50,7 +50,7 @@ const routers = createBrowserRouter([
                     {
                         index: true,
                         element: <EventsPage />,
-                        loader: fetchingEvents, // fetching data from backend.
+                        loader: fetchingEvents,
                     },
                     { path: ":eventId", element: <EventDetailPage /> },
                     { path: "new", element: <NewEventPage /> },
