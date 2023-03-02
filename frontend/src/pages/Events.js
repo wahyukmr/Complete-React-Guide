@@ -12,7 +12,11 @@ export async function fetchingEvents() {
     const response = await fetch("http://localhost:8080/events");
 
     if (!response.ok) {
-        // setError("Fetching events failed.");
+        // Menggunakan throw Response alih-alih object biasa, memungkinkan untuk menyertakan properti status yang membantu membangun komponen penanganan error.
+        throw new Response(
+            JSON.stringify({ message: "Couldn't fetch events" }),
+            { status: 500 }
+        );
     } else {
         return response;
     }

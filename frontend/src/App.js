@@ -30,6 +30,7 @@
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import EditEventPage from "./pages/EditEvent";
+import ErrorPage from "./pages/Error";
 import EventDetailPage from "./pages/EventDetail";
 import { EventsPage, fetchingEvents } from "./pages/Events";
 import HomePage from "./pages/Home";
@@ -41,6 +42,8 @@ const routers = createBrowserRouter([
     {
         path: "/",
         element: <RootLayout />,
+        // error element tidak hanya untuk menampilkan halaman jika path route tidak valid, tetapi juga akan ditampilkan ke layar setiap kali error dihasilkan dalam kode terkait route apapun.
+        errorElement: <ErrorPage />,
         children: [
             { index: true, element: <HomePage /> },
             {
