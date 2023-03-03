@@ -9,7 +9,6 @@ export default function EventForm({ method, event }) {
     }
 
     return (
-        // Form komponen dari react router ini memastikan bahwa default browser untuk mengirim Request ke backend akan dihilangkan, tetapi akan mengambil Request yang akan dikirim dan memberikannya ke action.
         <Form method="post" className={classes.form}>
             <p>
                 <label htmlFor="title">Title</label>

@@ -11,3 +11,7 @@ loader adalah properti yang menginginkan fungsi sebagai nilai, fungsi ini akan d
 ## hook useNavigation
 
 Hook yang memungkinkan untuk mengetahui apakah kita sedang dalam transisi aktif jika kita sedang memuat data atau jika kita memiliki transisi aktif yang sedang berlangsung.
+
+## action function
+
+Untuk memicu action function dapat menggunakan beberapa cara. Cara yang standar / umum adalah dengan menggunakan komponen Form dari react router, Form secara otomatis memicu action function dari route yang aktif atau route yang memuat Form itu. Cara lain dengan menambahkan action prop di komponen Form dan mengaturnya ke path lain. Jika memiliki action pada beberapa route lain bisa menggunakan cara ini.

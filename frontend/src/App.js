@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import EditEventPage from "./pages/EditEvent";
 import ErrorPage from "./pages/Error";
 import EventDetailPage, {
+    action as eventDetailAction,
     loader as eventDetailLoader,
 } from "./pages/EventDetail";
 import EventsPage, { loader as eventsLoader } from "./pages/Events";
@@ -14,7 +15,6 @@ const routers = createBrowserRouter([
     {
         path: "/",
         element: <RootLayout />,
-        // error element tidak hanya untuk menampilkan halaman jika path route tidak valid, tetapi juga akan ditampilkan ke layar setiap kali error dihasilkan dalam kode terkait route apapun.
         errorElement: <ErrorPage />,
         children: [
             { index: true, element: <HomePage /> },
@@ -27,7 +27,6 @@ const routers = createBrowserRouter([
                         element: <EventsPage />,
                         loader: eventsLoader,
                     },
-                    // Cara agar bisa mendapatkan akses ke loader tingkat yang lebih tinggi dari route yang tidak memiliki loader. Dengan menambahkan loader pada route induk membuat kedua route child memiliki akses ke loader yang sama. Penambahan properti id digunakan pada setiap komponen yang ingin menggunakan data tersebut menggunakan useRouteLoaderdata().
                     {
                         path: ":eventId",
                         loader: eventDetailLoader,
@@ -36,6 +35,7 @@ const routers = createBrowserRouter([
                             {
                                 index: true,
                                 element: <EventDetailPage />,
+                                action: eventDetailAction,
                             },
                             {
                                 path: "edit",
