@@ -22,6 +22,7 @@ export default function MainNavigation() {
                             className={({ isActive }) =>
                                 isActive ? classes.active : undefined
                             }
+                            end
                         >
                             Events
                         </NavLink>

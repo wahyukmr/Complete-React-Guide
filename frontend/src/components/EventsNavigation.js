@@ -12,6 +12,7 @@ export default function EventsNavigation() {
                             className={({ isActive }) =>
                                 isActive ? classes.active : undefined
                             }
+                            end
                         >
                             All Events
                         </NavLink>

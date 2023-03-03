@@ -1,16 +1,15 @@
 import { json, useLoaderData } from "react-router-dom";
 import EventsList from "../components/EventsList";
 
-export function EventsPage() {
+export default function EventsPage() {
     const dataEventsResult = useLoaderData();
     const dataEvents = dataEventsResult.events;
 
     return <EventsList events={dataEvents} />;
 }
 
-export async function fetchingEvents() {
+export async function loader() {
     const response = await fetch("http://localhost:8080/events");
-
     if (!response.ok) {
         // Membuat response secara manual.
         // throw new Response(
