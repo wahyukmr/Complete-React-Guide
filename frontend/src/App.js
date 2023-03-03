@@ -27,16 +27,23 @@ const routers = createBrowserRouter([
                         element: <EventsPage />,
                         loader: eventsLoader,
                     },
+                    // Cara agar bisa mendapatkan akses ke loader tingkat yang lebih tinggi dari route yang tidak memiliki loader. Dengan menambahkan loader pada route induk membuat kedua route child memiliki akses ke loader yang sama. Penambahan properti id digunakan pada setiap komponen yang ingin menggunakan data tersebut menggunakan useRouteLoaderdata().
                     {
                         path: ":eventId",
-                        element: <EventDetailPage />,
                         loader: eventDetailLoader,
+                        id: "event-detail",
+                        children: [
+                            {
+                                index: true,
+                                element: <EventDetailPage />,
+                            },
+                            {
+                                path: "edit",
+                                element: <EditEventPage />,
+                            },
+                        ],
                     },
                     { path: "new", element: <NewEventPage /> },
-                    {
-                        path: ":eventId/edit",
-                        element: <EditEventPage />,
-                    },
                 ],
             },
         ],
