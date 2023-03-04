@@ -1,12 +1,23 @@
-import { Form, useNavigate } from "react-router-dom";
-
+import { Form, useNavigate, useNavigation } from "react-router-dom";
 import classes from "./EventForm.module.css";
 
+// useNavigation hook yang disediakan react router dan memberikan kita akses ke objek navigasi dan kita dapat mengekstrak berbagai informasi dari objek tersebut, misalnya semua data yang dikirimkan. Tetapi kita juga dapat mengetahui keadaan transisi yang sedang aktif saat ini. Jadi dapat mendapatkan informasi tentang proses pengiriman data form lalu memicu sebuah tindakan setelah proses itu selesai.
 export default function EventForm({ method, event }) {
     const navigate = useNavigate();
+    const navigation = useNavigation();
+
     function cancelHandler() {
         navigate("..");
     }
+
+    const isSubmitting = navigation.state === "submitting";
+    // const isLoading = navigation.state === "loading";
+
+    // const textButton = isSubmitting
+    //     ? "Submitting"
+    //     : isLoading
+    //     ? "Saved!"
+    //     : "Save";
 
     return (
         <Form method="post" className={classes.form}>
@@ -51,10 +62,16 @@ export default function EventForm({ method, event }) {
                 />
             </p>
             <div className={classes.actions}>
-                <button type="button" onClick={cancelHandler}>
+                <button
+                    type="button"
+                    onClick={cancelHandler}
+                    disabled={isSubmitting}
+                >
                     Cancel
                 </button>
-                <button>Save</button>
+                <button disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting..." : "Save"}
+                </button>
             </div>
         </Form>
     );
