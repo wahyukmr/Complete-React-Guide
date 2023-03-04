@@ -15,3 +15,7 @@ Hook yang memungkinkan untuk mengetahui apakah kita sedang dalam transisi aktif 
 ## action function
 
 Untuk memicu action function dapat menggunakan beberapa cara. Cara yang standar / umum adalah dengan menggunakan komponen Form dari react router, Form secara otomatis memicu action function dari route yang aktif atau route yang memuat Form itu. Cara lain dengan menambahkan action prop di komponen Form dan mengaturnya ke path lain. Jika memiliki action pada beberapa route lain bisa menggunakan cara ini.
+
+## Validate user input
+
+Kita tidak boleh mengandalkan validasi di sisi klien (required attribut), harus selalu memiliki validasi di sisi server karena validasi di sisi klien dapat dimatikan dan dinonaktifkan dengan devtools browser. Lebih baik memiliki keduanya untuk memberi UI yang baik.

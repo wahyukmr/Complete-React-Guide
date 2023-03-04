@@ -20,6 +20,10 @@ export async function action({ request, params }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newEventData),
     });
+
+    if (response.status === 422) {
+        return response;
+    }
     if (!response.ok) {
         throw json({ message: "Error creating event" }, { status: 500 });
     }

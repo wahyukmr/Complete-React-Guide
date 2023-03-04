@@ -1,8 +1,14 @@
-import { Form, useNavigate, useNavigation } from "react-router-dom";
+import {
+    Form,
+    useActionData,
+    useNavigate,
+    useNavigation,
+} from "react-router-dom";
 import classes from "./EventForm.module.css";
 
-// useNavigation hook yang disediakan react router dan memberikan kita akses ke objek navigasi dan kita dapat mengekstrak berbagai informasi dari objek tersebut, misalnya semua data yang dikirimkan. Tetapi kita juga dapat mengetahui keadaan transisi yang sedang aktif saat ini. Jadi dapat mendapatkan informasi tentang proses pengiriman data form lalu memicu sebuah tindakan setelah proses itu selesai.
+// useActionData() melakukan hal yang sama seperti useLoaderData(), yang memberi kita akses ke data yang dikembalikan oleh action terdekat. Jadi dapat menggunakan data tersebut pada komponen ini meskipun ini bukan halaman komponen.
 export default function EventForm({ method, event }) {
+    const dataAction = useActionData();
     const navigate = useNavigate();
     const navigation = useNavigation();
 
@@ -11,16 +17,18 @@ export default function EventForm({ method, event }) {
     }
 
     const isSubmitting = navigation.state === "submitting";
-    // const isLoading = navigation.state === "loading";
-
-    // const textButton = isSubmitting
-    //     ? "Submitting"
-    //     : isLoading
-    //     ? "Saved!"
-    //     : "Save";
 
     return (
+        // Object.values method yang dibangun kedalam javascript utuk loop semua key pada objek dan mengembalikan nilainya kedalam array.
         <Form method="post" className={classes.form}>
+            {dataAction && dataAction.errors && (
+                <ul>
+                    {Object.values(dataAction.errors).map((err) => (
+                        <li key={err}>{err}</li>
+                    ))}
+                </ul>
+            )}
+            {console.log(dataAction)}
             <p>
                 <label htmlFor="title">Title</label>
                 <input
