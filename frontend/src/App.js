@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { action as manipulateEventAction } from "./components/EventForm";
 import EditEventPage from "./pages/EditEvent";
 import ErrorPage from "./pages/Error";
 import EventDetailPage, {
@@ -7,7 +8,7 @@ import EventDetailPage, {
 } from "./pages/EventDetail";
 import EventsPage, { loader as eventsLoader } from "./pages/Events";
 import HomePage from "./pages/Home";
-import NewEventPage, { action as newEventAction } from "./pages/NewEvent";
+import NewEventPage from "./pages/NewEvent";
 import RootLayout from "./pages/Root";
 import RootLayoutEvent from "./pages/RootEvent";
 
@@ -40,13 +41,14 @@ const routers = createBrowserRouter([
                             {
                                 path: "edit",
                                 element: <EditEventPage />,
+                                action: manipulateEventAction, // Menggunakan action yang sama pada route yang berbeda.
                             },
                         ],
                     },
                     {
                         path: "new",
                         element: <NewEventPage />,
-                        action: newEventAction,
+                        action: manipulateEventAction, // Menggunakan action yang sama pada route yang berbeda.
                     },
                 ],
             },

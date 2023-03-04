@@ -1,12 +1,13 @@
 import {
     Form,
+    json,
+    redirect,
     useActionData,
     useNavigate,
     useNavigation,
 } from "react-router-dom";
 import classes from "./EventForm.module.css";
 
-// useActionData() melakukan hal yang sama seperti useLoaderData(), yang memberi kita akses ke data yang dikembalikan oleh action terdekat. Jadi dapat menggunakan data tersebut pada komponen ini meskipun ini bukan halaman komponen.
 export default function EventForm({ method, event }) {
     const dataAction = useActionData();
     const navigate = useNavigate();
@@ -19,8 +20,9 @@ export default function EventForm({ method, event }) {
     const isSubmitting = navigation.state === "submitting";
 
     return (
-        // Object.values method yang dibangun kedalam javascript utuk loop semua key pada objek dan mengembalikan nilainya kedalam array.
-        <Form method="post" className={classes.form}>
+        // Method "post" untuk membuat event baru dan Method "patch" untuk mengedit event
+        // method disini hanya digunakan untuk mengatur method request di sisi klien yang dihasilkan react router kemudian akan diteruskan ke action
+        <Form method={method} className={classes.form}>
             {dataAction && dataAction.errors && (
                 <ul>
                     {Object.values(dataAction.errors).map((err) => (
@@ -28,7 +30,6 @@ export default function EventForm({ method, event }) {
                     ))}
                 </ul>
             )}
-            {console.log(dataAction)}
             <p>
                 <label htmlFor="title">Title</label>
                 <input
@@ -83,4 +84,38 @@ export default function EventForm({ method, event }) {
             </div>
         </Form>
     );
+}
+
+// Membuat action function dinamic agar dapat mengirim request untuk menambahkan event baru dan mengedit event yang sudah ada.
+export async function action({ request, params }) {
+    const method = request.method;
+    const dataForm = await request.formData();
+
+    const newEventData = {
+        title: dataForm.get("title"),
+        image: dataForm.get("image"),
+        date: dataForm.get("date"),
+        description: dataForm.get("description"),
+    };
+
+    let URL = "http://localhost:8080/events";
+    // mengirim request menggunakan huruf besar.
+    if (method === "PATCH") {
+        const eventId = params.eventId;
+        URL = `http://localhost:8080/events/${eventId}`;
+    }
+
+    const response = await fetch(URL, {
+        method: method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newEventData),
+    });
+
+    if (response.status === 422) {
+        return response;
+    }
+    if (!response.ok) {
+        throw json({ message: "Error creating event" }, { status: 500 });
+    }
+    return redirect("/events");
 }
