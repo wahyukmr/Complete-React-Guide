@@ -9,6 +9,7 @@ import EventDetailPage, {
 import EventsPage, { loader as eventsLoader } from "./pages/Events";
 import HomePage from "./pages/Home";
 import NewEventPage from "./pages/NewEvent";
+import NewsletterPage, { action as newsletterAction } from "./pages/Newsletter";
 import RootLayout from "./pages/Root";
 import RootLayoutEvent from "./pages/RootEvent";
 
@@ -41,16 +42,21 @@ const routers = createBrowserRouter([
                             {
                                 path: "edit",
                                 element: <EditEventPage />,
-                                action: manipulateEventAction, // Menggunakan action yang sama pada route yang berbeda.
+                                action: manipulateEventAction,
                             },
                         ],
                     },
                     {
                         path: "new",
                         element: <NewEventPage />,
-                        action: manipulateEventAction, // Menggunakan action yang sama pada route yang berbeda.
+                        action: manipulateEventAction,
                     },
                 ],
+            },
+            {
+                path: "newsletter",
+                element: <NewsletterPage />,
+                action: newsletterAction,
             },
         ],
     },
