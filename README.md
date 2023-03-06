@@ -34,3 +34,7 @@ Kesimpulannya, baik server-side session maupun authentication token memiliki kel
 ### Query parameter
 
 Query parameter adalah parameter yang ditambahkan dalam URL setelah tanda tanya dan berguna untuk mengirimkan data tambahan ke server dan mengontrol perilaku aplikasi web. Contohnya, kita bisa menggunakan query parameter untuk mengambil data dari server dengan filter tertentu atau mengatur opsi tampilan pada halaman web.
+
+### Route Protection
+
+Kita bisa menambahkan route protection dengan memanfaatkan loader, yang hanya memeriksa apakah memiliki token atau tidak, jika tidak memiliki token akan di redirect() ke halaman tertentu.
