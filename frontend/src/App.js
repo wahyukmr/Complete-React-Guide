@@ -11,6 +11,7 @@ import EventDetailPage, {
 } from "./pages/EventDetail";
 import EventsPage, { loader as eventsLoader } from "./pages/Events";
 import HomePage from "./pages/Home";
+import { action as logoutAction } from "./pages/Logout";
 import NewEventPage from "./pages/NewEvent";
 import NewsletterPage, { action as newsletterAction } from "./pages/Newsletter";
 import RootLayout from "./pages/Root";
@@ -66,6 +67,7 @@ const routers = createBrowserRouter([
                 element: <NewsletterPage />,
                 action: newsletterAction,
             },
+            { path: "logout", action: logoutAction },
         ],
     },
 ]);
