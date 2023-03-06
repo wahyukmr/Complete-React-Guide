@@ -37,5 +37,12 @@ export async function action({ request }) {
         throw json({ message: "Invalid response" }, { status: 500 });
     }
 
+    // mengakses token dari backend server
+    const resData = await response.json();
+    const token = resData.token;
+
+    // menyimpan token
+    localStorage.setItem("token", token);
+
     return redirect("/");
 }
