@@ -7,11 +7,10 @@ export default function AuthenticationPage() {
 
 // Action functions yang akan dieksekusi setiap kali form authentication dikirim.
 export async function action({ request }) {
-    // Mendapatkan searchParams di backend dengan beberapa fitur browser default.
     const searchParams = new URL(request.url).searchParams;
-    const mode = searchParams.get("mode") || "Login";
+    const mode = searchParams.get("mode") || "login";
 
-    if (mode !== "Login" && mode !== "Signup") {
+    if (mode !== "login" && mode !== "signup") {
         throw json({ message: "Unsupported mode" }, { status: 422 });
     }
 

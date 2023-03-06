@@ -1,16 +1,38 @@
-import { Form, Link, useSearchParams } from "react-router-dom";
+import {
+    Form,
+    Link,
+    useActionData,
+    useNavigation,
+    useSearchParams,
+} from "react-router-dom";
 import classes from "./AuthForm.module.css";
 
 export default function AuthForm() {
-    // Hook useSearchParams() memudahkan untk mendapatkan akses ke parameter query yang sedang diatur. Akan mengembalikan sebuah arrray dengan dua buah elemen, yang pertama adalah objek yang memberi kita akses ke parameter query yang saat ini ditetapkan, yang kedua adalah fungsi untuk memperbarui parameter query saat ini.
+    // Mendapatkan data yang dikembalikan oleh fungsi action yang dikirimkan form.
+    const data = useActionData();
+    const navigation = useNavigation();
+
     const [searchParams] = useSearchParams();
-    // method get untuk mengambil nilai parameter query tertentu.
-    const isLogin = searchParams.get("mode") === "Login";
+    const isLogin = searchParams.get("mode") === "login";
+
+    const buttonText =
+        navigation.state === "submitting"
+            ? "Submitting..."
+            : navigation.state === "loading"
+            ? "Done!"
+            : "Seve";
 
     return (
         <>
             <Form method="post" className={classes.form}>
-                <h1>{isLogin ? "Log in" : "Create a new user"}</h1>
+                <h1>{isLogin ? "Log in" : "Create new user"}</h1>
+                {data && data.errors && (
+                    <ul>
+                        {Object.values(data.errors).map((err) => (
+                            <li key={err}>{err}</li>
+                        ))}
+                    </ul>
+                )}
                 <p>
                     <label htmlFor="email">Email</label>
                     <input id="email" type="email" name="email" required />
@@ -25,10 +47,12 @@ export default function AuthForm() {
                     />
                 </p>
                 <div className={classes.actions}>
-                    <Link to={`?mode=${isLogin ? "Signup" : "Login"}`}>
-                        {isLogin ? "Create new user" : "Login"}
+                    <Link to={`?mode=${isLogin ? "signup" : "login"}`}>
+                        {isLogin ? "Sign in" : "Log in"}
                     </Link>
-                    <button>Save</button>
+                    <button disabled={navigation.state === "submitting"}>
+                        {buttonText}
+                    </button>
                 </div>
             </Form>
         </>
