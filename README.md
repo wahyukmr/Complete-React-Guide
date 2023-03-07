@@ -21,3 +21,15 @@
     React Single Page Application (SPA) adalah sebuah "Static Website", hanya terdiri dari HTML, CSS, JavaScript dan mungkin beberapa resource tetapi tidak mengamdung kode yang harus dieksekusi di server. Oleh karena itu kita hanya memerlukan Static Site Host, tidak perlu memerlukan penyedia hosting yang mengeksekusi kode di server.
 
 5.  Configure Server
+
+    Server-side routing dan client-side routing adalah dua teknik yang berbeda dalam menangani navigasi pengguna pada aplikasi web modern.
+
+    Server-side routing terjadi ketika permintaan HTTP dikirimkan dari browser ke server untuk memperoleh halaman web. Server-side routing digunakan untuk menentukan halaman mana yang harus ditampilkan ke pengguna, berdasarkan URL yang diminta oleh pengguna. Halaman kemudian akan diproses pada sisi server dan dikirimkan kembali ke browser untuk ditampilkan.
+
+    Di sisi lain, client-side routing terjadi ketika halaman web dibangun di sisi klien (browser) menggunakan framework JavaScript seperti React, Angular, atau Vue. Pada client-side routing, setelah halaman pertama kali dimuat, navigasi pengguna dilakukan dengan cara mengubah komponen tampilan (view) di sisi klien saja tanpa meminta halaman baru ke server.
+
+    Perbedaan mendasar antara server-side routing dan client-side routing adalah lokasi pemrosesan data navigasi. Pada server-side routing, pemrosesan data navigasi dilakukan pada sisi server, sedangkan pada client-side routing, pemrosesan data navigasi dilakukan pada sisi klien.
+
+    Keuntungan server-side routing adalah kemudahan dalam SEO dan keamanan karena mesin pencari dapat mengindeks halaman dengan mudah dan keamanan aplikasi dapat ditingkatkan dengan lebih mudah. Keuntungan client-side routing adalah kemampuan untuk menampilkan tampilan aplikasi yang lebih cepat dan interaktif dengan mengambil data dari API dan mengeksekusinya pada sisi klien tanpa harus meminta halaman baru dari server.
+
+    Namun, server-side routing dan client-side routing bukanlah pilihan yang eksklusif. Banyak aplikasi web modern menggunakan teknik server-side routing untuk halaman awal aplikasi, dan kemudian beralih ke teknik client-side routing untuk menangani navigasi pengguna selanjutnya. Teknik ini disebut sebagai hybrid routing atau universal routing.
