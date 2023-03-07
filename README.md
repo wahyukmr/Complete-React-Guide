@@ -1,8 +1,8 @@
 ## Deployment Steps:
 
-1. Test Code
+1.  Test Code
 
-2. Optimize Code
+2.  Optimize Code
 
     Lazy loading adalah teknik optimasi performa pada aplikasi yang digunakan untuk memuat sumber daya secara dinamis hanya saat dibutuhkan, daripada memuat semua sumber daya sekaligus saat halaman atau aplikasi dimuat. Dengan cara ini, aplikasi hanya memuat data yang diperlukan pada saat itu, yang dapat meningkatkan kecepatan loading halaman, mengurangi beban server, dan menghemat bandwidth.
 
@@ -12,8 +12,12 @@
 
     Namun, perlu diingat bahwa lazy loading tidak selalu merupakan solusi terbaik untuk semua kasus. Terkadang, memuat seluruh sumber daya sekaligus dapat lebih efisien atau dapat meningkatkan performa aplikasi secara keseluruhan. Selain itu, penggunaan lazy loading juga harus diterapkan dengan hati-hati untuk menghindari masalah dengan aksesibilitas dan SEO pada aplikasi.
 
-3. Build an App for Production
+3.  Build an App for Production
 
-4. Upload Production Code to Server
+        npm run build
 
-5. Configure Server
+4.  Upload Production Code to Server
+
+    React Single Page Application (SPA) adalah sebuah "Static Website", hanya terdiri dari HTML, CSS, JavaScript dan mungkin beberapa resource tetapi tidak mengamdung kode yang harus dieksekusi di server. Oleh karena itu kita hanya memerlukan Static Site Host, tidak perlu memerlukan penyedia hosting yang mengeksekusi kode di server.
+
+5.  Configure Server
