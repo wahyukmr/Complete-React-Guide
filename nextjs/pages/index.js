@@ -1,8 +1,6 @@
-import MeetupList from "@/components/meetups/MeetupList.";
+// name-domain.com/
 
-const {
-    default: MainNavigation,
-} = require("@/components/layout/MainNavigation");
+import MeetupList from "@/components/meetups/MeetupList.";
 
 export default function HomePage() {
     const DUMMY_MEETUPS = [
@@ -24,7 +22,6 @@ export default function HomePage() {
 
     return (
         <>
-            <MainNavigation />
             <MeetupList meetups={DUMMY_MEETUPS} />
         </>
     );

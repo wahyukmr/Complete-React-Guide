@@ -3,7 +3,7 @@ import { useRef } from "react";
 import Card from "../ui/Card";
 import classes from "./NewMeetupForm.module.css";
 
-export default function NewMeetupForm(props) {
+export default function NewMeetupForm({ onAddMeetup }) {
     const titleInputRef = useRef();
     const imageInputRef = useRef();
     const addressInputRef = useRef();
@@ -24,7 +24,7 @@ export default function NewMeetupForm(props) {
             description: enteredDescription,
         };
 
-        props.onAddMeetup(meetupData);
+        onAddMeetup(meetupData);
     }
 
     return (
