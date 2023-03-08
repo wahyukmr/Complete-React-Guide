@@ -1,35 +1,16 @@
-## Deployment Steps:
+## React.js & Next.js
 
-1.  Test Code
+ReactJS dan NextJS keduanya adalah framework untuk membangun aplikasi web dengan JavaScript. Namun, mereka melayani tujuan yang berbeda dan memiliki kekuatan yang berbeda.
 
-2.  Optimize Code
+<strong>ReactJS</strong> adalah library JavaScript front-end populer untuk membangun antarmuka pengguna. Ini menyediakan cara untuk membuat komponen UI yang dapat digunakan kembali dan mengelola status secara deklaratif dan efisien. ReactJS dapat digunakan untuk membangun aplikasi satu halaman (SPAs) dan aplikasi yang di-render oleh sisi server (SSR).
 
-    Lazy loading adalah teknik optimasi performa pada aplikasi yang digunakan untuk memuat sumber daya secara dinamis hanya saat dibutuhkan, daripada memuat semua sumber daya sekaligus saat halaman atau aplikasi dimuat. Dengan cara ini, aplikasi hanya memuat data yang diperlukan pada saat itu, yang dapat meningkatkan kecepatan loading halaman, mengurangi beban server, dan menghemat bandwidth.
+<strong>NextJS</strong>, di sisi lain, adalah framework yang dibangun di atas ReactJS yang menambahkan rendering oleh sisi server dan fitur lain seperti pembagian kode otomatis, performa yang dioptimalkan, dan deployment yang mudah untuk membuat aplikasi web berkualitas tinggi yang siap untuk produksi. NextJS sangat berguna untuk membangun aplikasi besar dan kompleks yang membutuhkan performa tinggi dan optimasi SEO.
 
-    Contoh penerapan lazy loading adalah pada gambar atau video pada sebuah halaman web. Ketika halaman dimuat, gambar atau video hanya memuat gambar yang terlihat pada layar dan memuat gambar yang tidak terlihat atau yang berada di bawah layar hanya saat pengguna menggulir ke bawah halaman. Dengan menggunakan teknik ini, halaman web dapat dimuat lebih cepat karena hanya memuat gambar yang benar-benar diperlukan, bukan seluruh gambar di halaman tersebut.
+Berikut adalah beberapa perbedaan kunci antara NextJS dan ReactJS:
 
-    Pada aplikasi yang lebih kompleks, lazy loading juga dapat digunakan untuk memuat komponen atau modul hanya saat dibutuhkan. Dengan cara ini, aplikasi dapat mempercepat waktu loading halaman dan meningkatkan responsivitas dengan mengurangi waktu yang diperlukan untuk memuat seluruh aplikasi sekaligus.
+-   <strong>Rendering oleh sisi server:</strong> NextJS menyediakan rendering oleh sisi server secara langsung, yang berarti bahwa waktu muat halaman awal lebih cepat dan situs web dapat lebih ramah SEO. ReactJS tidak menyediakan fungsionalitas ini secara default, tetapi bisa dicapai menggunakan library tambahan seperti NextJS.
+-   <strong>Pembagian kode otomatis:</strong> NextJS secara otomatis membagi kode menjadi beberapa bagian kecil, yang dapat dimuat secara dinamis sesuai kebutuhan. Ini menghasilkan waktu muat yang lebih cepat dan performa yang lebih baik. ReactJS tidak menyediakan fungsionalitas ini, tetapi bisa dicapai menggunakan library tambahan.
+-   <strong>Routing:</strong> NextJS menyediakan sistem routing bawaan yang membuat mudah untuk menentukan dan mengelola rute halaman. ReactJS tidak menyediakan fungsionalitas ini, tetapi bisa dicapai menggunakan library tambahan.
+-   <strong>Deployment:</strong> NextJS memudahkan untuk menyebarluaskan aplikasi Anda ke produksi dengan menyediakan konfigurasi pembangunan yang dioptimalkan dan optimasi otomatis. ReactJS membutuhkan konfigurasi dan penyiapan tambahan untuk diterbitkan ke produksi.
 
-    Namun, perlu diingat bahwa lazy loading tidak selalu merupakan solusi terbaik untuk semua kasus. Terkadang, memuat seluruh sumber daya sekaligus dapat lebih efisien atau dapat meningkatkan performa aplikasi secara keseluruhan. Selain itu, penggunaan lazy loading juga harus diterapkan dengan hati-hati untuk menghindari masalah dengan aksesibilitas dan SEO pada aplikasi.
-
-3.  Build an App for Production
-
-        npm run build
-
-4.  Upload Production Code to Server
-
-    React Single Page Application (SPA) adalah sebuah "Static Website", hanya terdiri dari HTML, CSS, JavaScript dan mungkin beberapa resource tetapi tidak mengamdung kode yang harus dieksekusi di server. Oleh karena itu kita hanya memerlukan Static Site Host, tidak perlu memerlukan penyedia hosting yang mengeksekusi kode di server.
-
-5.  Configure Server
-
-    Server-side routing dan client-side routing adalah dua teknik yang berbeda dalam menangani navigasi pengguna pada aplikasi web modern.
-
-    Server-side routing terjadi ketika permintaan HTTP dikirimkan dari browser ke server untuk memperoleh halaman web. Server-side routing digunakan untuk menentukan halaman mana yang harus ditampilkan ke pengguna, berdasarkan URL yang diminta oleh pengguna. Halaman kemudian akan diproses pada sisi server dan dikirimkan kembali ke browser untuk ditampilkan.
-
-    Di sisi lain, client-side routing terjadi ketika halaman web dibangun di sisi klien (browser) menggunakan framework JavaScript seperti React, Angular, atau Vue. Pada client-side routing, setelah halaman pertama kali dimuat, navigasi pengguna dilakukan dengan cara mengubah komponen tampilan (view) di sisi klien saja tanpa meminta halaman baru ke server.
-
-    Perbedaan mendasar antara server-side routing dan client-side routing adalah lokasi pemrosesan data navigasi. Pada server-side routing, pemrosesan data navigasi dilakukan pada sisi server, sedangkan pada client-side routing, pemrosesan data navigasi dilakukan pada sisi klien.
-
-    Keuntungan server-side routing adalah kemudahan dalam SEO dan keamanan karena mesin pencari dapat mengindeks halaman dengan mudah dan keamanan aplikasi dapat ditingkatkan dengan lebih mudah. Keuntungan client-side routing adalah kemampuan untuk menampilkan tampilan aplikasi yang lebih cepat dan interaktif dengan mengambil data dari API dan mengeksekusinya pada sisi klien tanpa harus meminta halaman baru dari server.
-
-    Namun, server-side routing dan client-side routing bukanlah pilihan yang eksklusif. Banyak aplikasi web modern menggunakan teknik server-side routing untuk halaman awal aplikasi, dan kemudian beralih ke teknik client-side routing untuk menangani navigasi pengguna selanjutnya. Teknik ini disebut sebagai hybrid routing atau universal routing.
+Secara keseluruhan, NextJS adalah framework yang sangat kuat yang menyediakan banyak manfaat untuk membangun aplikasi web berkualitas tinggi, sementara ReactJS adalah library yang lebih ringan yang ideal untuk membangun komponen UI yang dapat digunakan kembali.
