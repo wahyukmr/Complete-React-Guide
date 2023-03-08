@@ -24,3 +24,7 @@ Dalam tradisi pengembangan web, pengembangan aplikasi web terdiri dari dua kompo
 Next.js, sebagai "fullstack framework", memungkinkan pengembang untuk membuat aplikasi web lengkap yang dapat merender halaman secara server-side, memiliki routing yang baik, pembagian kode otomatis, dan performa yang dioptimalkan. Selain itu, Next.js menyediakan dukungan untuk fitur seperti autentikasi pengguna, penanganan formulir, dan akses ke data melalui API.
 
 Karena Next.js menyediakan dukungan untuk sisi klien dan sisi server, serta fitur-fitur yang dibutuhkan untuk membangun aplikasi web yang lengkap, ia dapat disebut sebagai "fullstack framework". Hal ini juga memudahkan pengembangan aplikasi web dengan Next.js, karena pengembang tidak perlu mempelajari banyak teknologi terpisah dan dapat memusatkan perhatian pada pengembangan fitur-fitur aplikasi.
+
+### Dinamic pages
+
+Jika memiliki tanda kurung siku di nama file, ini memberi tahu nextjs bahwa ini akan menjadi halaman dinamic sehingga harus dimuat untuk nilai yang berbeda pada path.
