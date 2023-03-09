@@ -2,6 +2,7 @@ import MeetupItem from "./MeetupItem";
 import styles from "./MeetupList.module.css";
 
 export default function MeetupList({ meetups }) {
+    console.log(meetups);
     return (
         <ul className={styles.list}>
             {meetups.map((meetup) => (

@@ -25,6 +25,18 @@ Next.js, sebagai "fullstack framework", memungkinkan pengembang untuk membuat ap
 
 Karena Next.js menyediakan dukungan untuk sisi klien dan sisi server, serta fitur-fitur yang dibutuhkan untuk membangun aplikasi web yang lengkap, ia dapat disebut sebagai "fullstack framework". Hal ini juga memudahkan pengembangan aplikasi web dengan Next.js, karena pengembang tidak perlu mempelajari banyak teknologi terpisah dan dapat memusatkan perhatian pada pengembangan fitur-fitur aplikasi.
 
-### Dinamic pages
+## Dinamic pages
 
 Jika memiliki tanda kurung siku di nama file, ini memberi tahu nextjs bahwa ini akan menjadi halaman dinamic sehingga harus dimuat untuk nilai yang berbeda pada path.
+
+## Static generation & Server-side Rendering
+
+Static generation dan server-side rendering adalah dua teknik yang berbeda yang bisa digunakan dalam Next.js untuk mempercepat waktu rendering halaman web dan meningkatkan pengalaman pengguna.
+
+-   <strong>Server-side rendering (SSR)</strong> di Next.js memungkinkan untuk men-generate halaman web pada waktu request, yaitu ketika pengguna mengakses halaman web. Dalam SSR, server akan memproses permintaan pengguna dan mengirimkan halaman web yang telah di-generate dari server. SSR berguna untuk membuat aplikasi yang dinamis dan kompleks karena dapat mengambil data dari server dan men-generate halaman dengan data tersebut.
+
+-   Default rendering / <strong>Static generation (SG)</strong> di Next.js memungkinkan untuk men-generate halaman web pada waktu kompilasi, yaitu ketika aplikasi di-build. Dalam SG, halaman web di-generate menjadi file HTML yang disimpan di server, sehingga saat pengguna mengakses halaman, server hanya perlu menampilkan file HTML yang sudah disimpan, tanpa perlu melakukan pengolahan data yang kompleks.
+
+Perbedaan utama antara SG dan SSR di Next.js adalah waktu rendering halaman web. SG menghasilkan file HTML pada waktu build, sementara SSR mem-generate halaman web pada waktu request. Karena SG menghasilkan file HTML yang bisa disajikan langsung oleh server, maka SG lebih cepat dalam menampilkan halaman web ketika pengguna mengaksesnya. Namun, SG kurang fleksibel karena hanya bisa menampilkan data yang sudah ada pada waktu build, sedangkan SSR bisa menampilkan data yang baru di-generate pada waktu request.
+
+Pilihan antara SG dan SSR bergantung pada jenis aplikasi yang ingin dibuat dan kebutuhan penggunaannya. Jika aplikasi membutuhkan konten yang dinamis dan sering berubah, maka SSR lebih cocok. Namun, jika aplikasi memiliki konten yang relatif statis dan tidak sering berubah, maka SG bisa menjadi pilihan yang lebih tepat untuk meningkatkan kecepatan dan kinerja halaman web.
