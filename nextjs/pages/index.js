@@ -22,7 +22,18 @@ export default function HomePage(props) {
     return <MeetupList meetups={props.meetup} />;
 }
 
-// Jika data berubah terlalu sering, ada property tambahan yang perlu ditambahkan ke objek. Revalidate property. berapapun nilainya akan memastikan bahwa halaman ini akan re-generated di server setelah deployment, sehingga kita tidak perlu re-deploy dan re-generation sepanjang waktu hanya karena beberapa data berubah.
+// export async function getServerSideProps(context) {
+//     // Request objek dapat membantu misalnya ketika bekerja dengan Authentication dan perlu memeriksa beberapa session cookie
+//     const req = context.req;
+//     const res = context.res;
+
+//     return {
+//         props: {
+//             meetup: DUMMY_MEETUPS,
+//         },
+//     };
+// }
+
 export async function getStaticProps() {
     return {
         props: {
