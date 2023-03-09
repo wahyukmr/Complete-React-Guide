@@ -43,7 +43,7 @@ Next.js memiliki dukungan untuk Static Site Generation melalui fitur "getStaticP
 
 Perbedaan utama antara SSG dan SSR di Next.js adalah waktu rendering halaman web. SSG menghasilkan file HTML pada waktu build, sementara SSR mem-generate halaman web pada waktu request. Karena SSG menghasilkan file HTML yang bisa disajikan langsung oleh server, maka SSG lebih cepat dalam menampilkan halaman web ketika pengguna mengaksesnya. Namun, SSG kurang fleksibel karena hanya bisa menampilkan data yang sudah ada pada waktu build, sedangkan SSR bisa menampilkan data yang baru di-generate pada waktu request.
 
-Pilihan antara SSG atau SSR bergantung pada jenis aplikasi yang ingin dibuat dan kebutuhan penggunaannya. Jika aplikasi membutuhkan konten yang dinamis dan sering berubah, maka SSR lebih cocok. Namun, jika aplikasi memiliki konten yang relatif statis dan tidak sering berubah, maka SSG bisa menjadi pilihan yang lebih tepat untuk meningkatkan kecepatan dan kinerja halaman web.
+Pilihan antara SSG atau SSR bergantung pada jenis aplikasi yang ingin dibuat dan kebutuhan penggunaannya. Jika aplikasi membutuhkan konten yang dinamis dan sering berubah serta memerlukan akses ke objek request, maka SSR lebih cocok. Namun, jika aplikasi memiliki konten yang relatif statis dan tidak sering berubah serta tidak memerlukan objek request, maka SSG bisa menjadi pilihan yang lebih tepat untuk meningkatkan kecepatan dan kinerja halaman web.
 
 ### Revalidate property
 
