@@ -29,34 +29,24 @@ Karena Next.js menyediakan dukungan untuk sisi klien dan sisi server, serta fitu
 
 Jika memiliki tanda kurung siku di nama file, ini memberi tahu nextjs bahwa ini akan menjadi halaman dinamic sehingga harus dimuat untuk nilai yang berbeda pada path.
 
-## Static generation & Server-side Rendering
+## Static-side generation & Server-side Rendering
 
 Static generation dan server-side rendering adalah dua teknik yang berbeda yang bisa digunakan dalam Next.js untuk mempercepat waktu rendering halaman web dan meningkatkan pengalaman pengguna.
 
 -   <strong>Server-side rendering (SSR)</strong> di Next.js memungkinkan untuk men-generate halaman web pada waktu request, yaitu ketika pengguna mengakses halaman web. Dalam SSR, server akan memproses permintaan pengguna dan mengirimkan halaman web yang telah di-generate dari server. SSR berguna untuk membuat aplikasi yang dinamis dan kompleks karena dapat mengambil data dari server dan men-generate halaman dengan data tersebut.
 
--   Default rendering / <strong>Static generation (SG)</strong> di Next.js memungkinkan untuk men-generate halaman web pada waktu kompilasi, yaitu ketika aplikasi di-build. Dalam SG, halaman web di-generate menjadi file HTML yang disimpan di server, sehingga saat pengguna mengakses halaman, server hanya perlu menampilkan file HTML yang sudah disimpan, tanpa perlu melakukan pengolahan data yang kompleks.
+Next.js memiliki dukungan untuk Server Side Rendering melalui fitur "getServerSideProps()". getServerSideProps digunakan ketika kita ingin mengambil data pada saat request dari client (saat website diakses), dan data yang diambil akan selalu up-to-date karena diambil langsung dari server pada saat request. getServerSideProps sangat cocok digunakan pada data yang dinamis, misalnya data dari database.
 
-Perbedaan utama antara SG dan SSR di Next.js adalah waktu rendering halaman web. SG menghasilkan file HTML pada waktu build, sementara SSR mem-generate halaman web pada waktu request. Karena SG menghasilkan file HTML yang bisa disajikan langsung oleh server, maka SG lebih cepat dalam menampilkan halaman web ketika pengguna mengaksesnya. Namun, SG kurang fleksibel karena hanya bisa menampilkan data yang sudah ada pada waktu build, sedangkan SSR bisa menampilkan data yang baru di-generate pada waktu request.
+2.  Default rendering / <strong>Static-side generation (SSG)</strong> di Next.js memungkinkan untuk men-generate halaman web pada waktu kompilasi, yaitu ketika aplikasi di-build. Dalam SSG, halaman web di-generate menjadi file HTML yang disimpan di server, sehingga saat pengguna mengakses halaman, server hanya perlu menampilkan file HTML yang sudah disimpan, tanpa perlu melakukan pengolahan data yang kompleks.
 
-Pilihan antara SG dan SSR bergantung pada jenis aplikasi yang ingin dibuat dan kebutuhan penggunaannya. Jika aplikasi membutuhkan konten yang dinamis dan sering berubah, maka SSR lebih cocok. Namun, jika aplikasi memiliki konten yang relatif statis dan tidak sering berubah, maka SG bisa menjadi pilihan yang lebih tepat untuk meningkatkan kecepatan dan kinerja halaman web.
+Next.js memiliki dukungan untuk Static Site Generation melalui fitur "getStaticProps()". getStaticProps digunakan ketika kita ingin mengambil data pada saat build time (saat kita build website), dan data yang diambil akan di-cache oleh Next.js dan di-update sesuai waktu yang ditentukan oleh kita atau bila terjadi perubahan pada data. getStaticProps sangat cocok digunakan pada data yang statis, misalnya data dari file JSON atau CMS.
+
+Perbedaan utama antara SSG dan SSR di Next.js adalah waktu rendering halaman web. SSG menghasilkan file HTML pada waktu build, sementara SSR mem-generate halaman web pada waktu request. Karena SSG menghasilkan file HTML yang bisa disajikan langsung oleh server, maka SSG lebih cepat dalam menampilkan halaman web ketika pengguna mengaksesnya. Namun, SSG kurang fleksibel karena hanya bisa menampilkan data yang sudah ada pada waktu build, sedangkan SSR bisa menampilkan data yang baru di-generate pada waktu request.
+
+Pilihan antara SSG atau SSR bergantung pada jenis aplikasi yang ingin dibuat dan kebutuhan penggunaannya. Jika aplikasi membutuhkan konten yang dinamis dan sering berubah, maka SSR lebih cocok. Namun, jika aplikasi memiliki konten yang relatif statis dan tidak sering berubah, maka SSG bisa menjadi pilihan yang lebih tepat untuk meningkatkan kecepatan dan kinerja halaman web.
 
 ### Revalidate property
 
 revalidate adalah sebuah properti yang bisa digunakan dalam static generation di Next.js untuk mengatur interval waktu (dalam detik) sebelum file HTML hasil generate akan di-revalidate atau diperbarui. Properti ini bisa digunakan pada halaman yang di-generate secara static, dengan tujuan untuk memastikan bahwa data yang ditampilkan di halaman selalu up-to-date.
 
 Penggunaan revalidate sangat berguna dalam mengoptimalkan performa situs web. Dengan menggunakan properti ini, Anda bisa mengatur interval waktu di mana data di-cache dianggap valid, sehingga situs web bisa menampilkan data yang terbaru tanpa perlu merefresh halaman. Selain itu, penggunaan revalidate juga berguna dalam menghemat sumber daya server, karena halaman hanya akan di-generate ulang ketika data sudah usang dan diperlukan kembali.
-
-## getStaticProps() & getServerSideProps()
-
-getStaticProps dan getServerSideProps adalah dua metode yang digunakan di Next.js untuk mengambil data pada saat render pada server-side.
-
-1. getStaticProps:
-   getStaticProps digunakan ketika kita ingin mengambil data pada saat build time (saat kita build website), dan data yang diambil akan di-cache oleh Next.js dan di-update sesuai waktu yang ditentukan oleh kita atau bila terjadi perubahan pada data. getStaticProps sangat cocok digunakan pada data yang statis, misalnya data dari file JSON atau CMS.
-
-2. getServerSideProps:
-   getServerSideProps digunakan ketika kita ingin mengambil data pada saat request dari client (saat website diakses), dan data yang diambil akan selalu up-to-date karena diambil langsung dari server pada saat request. getServerSideProps sangat cocok digunakan pada data yang dinamis, misalnya data dari database.
-
-Perbedaan utama antara getStaticProps dan getServerSideProps adalah pada saat diambilnya data (build time vs request time) dan juga pada waktu update data (di-cache vs selalu up-to-date). Kita bisa memilih metode yang sesuai dengan kebutuhan kita, apakah data yang diambil statis atau dinamis, dan apakah kita ingin data tersebut di-cache atau selalu up-to-date.
-
-Gunakan getStaticProps() jika tidak memiliki data yang berubah sepanjang waktu(berubah beberapa kali setiap detik) dan tidak memerlukan akses ke request objek (misal untuk authentication). Halaman akan lebih cepat karena dapat di cache dan digunakan kembali alih-alih dibuat ulang setiap saat.
