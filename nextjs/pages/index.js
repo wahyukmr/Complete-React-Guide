@@ -1,7 +1,6 @@
 // name-domain.com/
 import MeetupList from "@/components/meetups/MeetupList.";
 
-// cara memindahkan pengambilan data dari klien ke sisi server (selama proses build)
 const DUMMY_MEETUPS = [
     {
         id: "m1",
@@ -23,12 +22,12 @@ export default function HomePage(props) {
     return <MeetupList meetups={props.meetup} />;
 }
 
-// Jika perlu menunggu data, manambahkan pengambilan data ke komponen halaman, kita dapat melakukannya dengan mengeksport fungsi khusus dari dalam file komponen halaman. Fungsi tersebut hanya berfungsi di file komponen halaman ini, tidak di komponen lain. Fungsi getStaticProps() akan memastikan memuat data terlebih dahulu kemudian akan mengembalikan props untuk fungsi komponen (HomePage). Sehingga kita dapat memuat data sebelum fungsi komponen dijalankan.
+// Jika data berubah terlalu sering, ada property tambahan yang perlu ditambahkan ke objek. Revalidate property. berapapun nilainya akan memastikan bahwa halaman ini akan re-generated di server setelah deployment, sehingga kita tidak perlu re-deploy dan re-generation sepanjang waktu hanya karena beberapa data berubah.
 export async function getStaticProps() {
-    // Disini dapat menjalankan kode apapun yang biasanya hanya berjalan di server (seperti mengakses data dari API atau terhubung dengan aman ke database) karena kode disini tidak akan pernah berakhir di sisi klien. Dan harus selalu mengembalikan props objek.
     return {
         props: {
             meetup: DUMMY_MEETUPS,
         },
+        revalidate: 1, // set ke 1 jika data berubah sepanjang waktu
     };
 }
