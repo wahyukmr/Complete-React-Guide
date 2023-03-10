@@ -33,7 +33,7 @@ Jika memiliki tanda kurung siku di nama file, ini memberi tahu nextjs bahwa ini 
 
 Static generation dan server-side rendering adalah dua teknik yang berbeda yang bisa digunakan dalam Next.js untuk mempercepat waktu rendering halaman web dan meningkatkan pengalaman pengguna.
 
--   <strong>Server-side rendering (SSR)</strong> di Next.js memungkinkan untuk men-generate halaman web pada waktu request, yaitu ketika pengguna mengakses halaman web. Dalam SSR, server akan memproses permintaan pengguna dan mengirimkan halaman web yang telah di-generate dari server. SSR berguna untuk membuat aplikasi yang dinamis dan kompleks karena dapat mengambil data dari server dan men-generate halaman dengan data tersebut.
+1.  <strong>Server-side rendering (SSR)</strong> di Next.js memungkinkan untuk men-generate halaman web pada waktu request, yaitu ketika pengguna mengakses halaman web. Dalam SSR, server akan memproses permintaan pengguna dan mengirimkan halaman web yang telah di-generate dari server. SSR berguna untuk membuat aplikasi yang dinamis dan kompleks karena dapat mengambil data dari server dan men-generate halaman dengan data tersebut.
 
 Next.js memiliki dukungan untuk Server Side Rendering melalui fitur "getServerSideProps()". getServerSideProps digunakan ketika kita ingin mengambil data pada saat request dari client (saat website diakses), dan data yang diambil akan selalu up-to-date karena diambil langsung dari server pada saat request. getServerSideProps sangat cocok digunakan pada data yang dinamis, misalnya data dari database.
 
@@ -50,3 +50,13 @@ Pilihan antara SSG atau SSR bergantung pada jenis aplikasi yang ingin dibuat dan
 revalidate adalah sebuah properti yang bisa digunakan dalam static generation di Next.js untuk mengatur interval waktu (dalam detik) sebelum file HTML hasil generate akan di-revalidate atau diperbarui. Properti ini bisa digunakan pada halaman yang di-generate secara static, dengan tujuan untuk memastikan bahwa data yang ditampilkan di halaman selalu up-to-date.
 
 Penggunaan revalidate sangat berguna dalam mengoptimalkan performa situs web. Dengan menggunakan properti ini, Anda bisa mengatur interval waktu di mana data di-cache dianggap valid, sehingga situs web bisa menampilkan data yang terbaru tanpa perlu merefresh halaman. Selain itu, penggunaan revalidate juga berguna dalam menghemat sumber daya server, karena halaman hanya akan di-generate ulang ketika data sudah usang dan diperlukan kembali.
+
+## API Routes
+
+API routes di Next.js adalah fitur yang memungkinkan kita membuat API server-side dengan mudah. API routes menyediakan cara mudah untuk menangani permintaan HTTP dari klien dan mengirimkan kembali respon yang sesuai.
+
+API routes pada Next.js dibuat dengan membuat file JavaScript di dalam direktori /pages/api. File ini harus memiliki nama yang dimulai dengan awalan api/. Setiap file ini akan berisi kode JavaScript yang menangani permintaan HTTP dan mengirimkan kembali respon yang sesuai dan akan berjalan diserver dan tidak akan pernah di ekspose ke klien.
+
+Contohnya, jika kita ingin membuat API route untuk mengambil daftar produk dari server, kita bisa membuat file bernama api/products.js dan menambahkan kode JavaScript untuk menangani permintaan GET dari klien dan mengirimkan daftar produk sebagai respon.
+
+API routes pada Next.js sangat berguna ketika kita ingin membuat aplikasi web yang memerlukan komunikasi dengan server-side, seperti aplikasi e-commerce atau platform media sosial. Dengan API routes, kita dapat membuat server-side logic yang dapat dipanggil dari sisi klien secara mudah dan efisien.
