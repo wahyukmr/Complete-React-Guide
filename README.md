@@ -29,17 +29,31 @@ Karena Next.js menyediakan dukungan untuk sisi klien dan sisi server, serta fitu
 
 Jika memiliki tanda kurung siku di nama file, ini memberi tahu nextjs bahwa ini akan menjadi halaman dinamic sehingga harus dimuat untuk nilai yang berbeda pada path.
 
-## Static-side generation & Server-side Rendering
+## Static-side generation & Server-side Rendering nextjs
 
-Static generation dan server-side rendering adalah dua teknik yang berbeda yang bisa digunakan dalam Next.js untuk mempercepat waktu rendering halaman web dan meningkatkan pengalaman pengguna.
+Static-side generation dan server-side rendering adalah dua teknik yang berbeda yang bisa digunakan dalam Next.js untuk mempercepat waktu rendering halaman web dan meningkatkan pengalaman pengguna.
 
 1.  <strong>Server-side rendering (SSR)</strong> di Next.js memungkinkan untuk men-generate halaman web pada waktu request, yaitu ketika pengguna mengakses halaman web. Dalam SSR, server akan memproses permintaan pengguna dan mengirimkan halaman web yang telah di-generate dari server. SSR berguna untuk membuat aplikasi yang dinamis dan kompleks karena dapat mengambil data dari server dan men-generate halaman dengan data tersebut.
 
-Next.js memiliki dukungan untuk Server Side Rendering melalui fitur "getServerSideProps()". getServerSideProps digunakan ketika kita ingin mengambil data pada saat request dari client (saat website diakses), dan data yang diambil akan selalu up-to-date karena diambil langsung dari server pada saat request. getServerSideProps sangat cocok digunakan pada data yang dinamis, misalnya data dari database.
+    Next.js memiliki dukungan untuk Server Side Rendering melalui fitur "getServerSideProps()". getServerSideProps digunakan ketika kita ingin mengambil data pada saat request dari client (saat website diakses), dan data yang diambil akan selalu up-to-date karena diambil langsung dari server pada saat request. getServerSideProps sangat cocok digunakan pada data yang dinamis, misalnya data dari database.
+
+    SSR (server-side rendering) cocok untuk proyek-proyek yang memerlukan konten yang dinamis dan dapat diperbarui secara teratur, serta fitur-fitur interaktif seperti fitur pencarian, tampilan data real-time, atau formulir online. Beberapa contoh proyek yang sebaiknya menggunakan SSR adalah:
+
+    -   <strong>Situs web e-commerce:</strong> Situs web e-commerce memerlukan interaksi yang lebih dinamis antara pengguna dan server, seperti memuat daftar produk dalam halaman yang dapat di-scrolling, menampilkan tampilan produk secara real-time, dan fitur pencarian yang dinamis. SSR dapat memungkinkan situs web e-commerce untuk memberikan pengalaman pengguna yang lebih baik dengan waktu respon yang cepat.
+    -   <strong>Situs web media:</strong> Situs web media memerlukan fitur-fitur interaktif seperti memuat daftar artikel secara real-time, pencarian, atau berbagi konten ke media sosial. SSR dapat memungkinkan situs web media untuk memuat konten dengan cepat dan responsif.
+    -   <strong>Situs web game:</strong> Situs web game seringkali memerlukan fitur-fitur interaktif seperti fitur real-time chat, tampilan data real-time, atau memuat game secara dinamis. SSR dapat memungkinkan situs web game untuk memberikan pengalaman pengguna yang lebih baik dan responsif.
+    -   <strong>Aplikasi bisnis:</strong> Aplikasi bisnis memerlukan fitur-fitur yang lebih kompleks seperti formulir online, tampilan data real-time, atau fitur-fitur keamanan yang tinggi. SSR dapat memungkinkan aplikasi bisnis untuk memuat data dan mengirim permintaan ke server dengan cepat dan responsif.
 
 2.  Default rendering / <strong>Static-side generation (SSG)</strong> di Next.js memungkinkan untuk men-generate halaman web pada waktu kompilasi, yaitu ketika aplikasi di-build. Dalam SSG, halaman web di-generate menjadi file HTML yang disimpan di server, sehingga saat pengguna mengakses halaman, server hanya perlu menampilkan file HTML yang sudah disimpan, tanpa perlu melakukan pengolahan data yang kompleks.
 
-Next.js memiliki dukungan untuk Static Site Generation melalui fitur "getStaticProps()". getStaticProps digunakan ketika kita ingin mengambil data pada saat build time (saat kita build website), dan data yang diambil akan di-cache oleh Next.js dan di-update sesuai waktu yang ditentukan oleh kita atau bila terjadi perubahan pada data. getStaticProps sangat cocok digunakan pada data yang statis, misalnya data dari file JSON atau CMS.
+    Next.js memiliki dukungan untuk Static Site Generation melalui fitur "getStaticProps()". getStaticProps digunakan ketika kita ingin mengambil data pada saat build time (saat kita build website), dan data yang diambil akan di-cache oleh Next.js dan di-update sesuai waktu yang ditentukan oleh kita atau bila terjadi perubahan pada data. getStaticProps sangat cocok digunakan pada data yang statis, misalnya data dari file JSON atau CMS.
+
+    Situs web statis cocok untuk proyek-proyek dengan konten yang tidak berubah atau tidak berubah sering, seperti halaman arahan (landing page), portofolio pribadi, situs web perusahaan, blog statis, atau situs web dokumentasi. Beberapa contoh proyek yang sebaiknya menggunakan situs web statis adalah:
+
+    -   <strong>Situs web perusahaan:</strong> Jika situs web perusahaan hanya berisi informasi umum seperti deskripsi perusahaan, informasi kontak, atau informasi produk atau layanan, maka situs web statis dapat menjadi pilihan yang tepat. Situs web statis akan lebih cepat dimuat dan memungkinkan perusahaan untuk menghemat biaya hosting.
+    -   <strong>Halaman arahan (landing page):</strong> Halaman arahan seringkali hanya berisi informasi yang relatif statis, seperti deskripsi produk atau layanan, formulir kontak, atau tautan ke halaman lain. Situs web statis dapat memungkinkan halaman arahan dimuat lebih cepat dan memberikan pengalaman pengguna yang lebih baik.
+    -   <strong>Portofolio pribadi:</strong> Jika Anda seorang desainer, pengembang, atau seniman, maka situs web statis dapat menjadi cara yang baik untuk menunjukkan portofolio Anda. Situs web statis memungkinkan Anda untuk menampilkan karya Anda dengan cepat dan efisien tanpa perlu mempertimbangkan aspek dinamis.
+    -   <strong>Situs web dokumentasi:</strong> Jika Anda ingin membuat situs web dokumentasi atau pengetahuan dasar, maka situs web statis dapat menjadi pilihan yang baik. Situs web statis dapat memungkinkan dokumentasi Anda dimuat lebih cepat dan memudahkan pengguna untuk menavigasi konten Anda.
 
 Perbedaan utama antara SSG dan SSR di Next.js adalah waktu rendering halaman web. SSG menghasilkan file HTML pada waktu build, sementara SSR mem-generate halaman web pada waktu request. Karena SSG menghasilkan file HTML yang bisa disajikan langsung oleh server, maka SSG lebih cepat dalam menampilkan halaman web ketika pengguna mengaksesnya. Namun, SSG kurang fleksibel karena hanya bisa menampilkan data yang sudah ada pada waktu build, sedangkan SSR bisa menampilkan data yang baru di-generate pada waktu request.
 
