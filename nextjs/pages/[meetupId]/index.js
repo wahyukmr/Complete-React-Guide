@@ -1,16 +1,23 @@
 import MeetupDetail from "@/components/meetups/MeetupDetail";
 import { ObjectId } from "mongodb";
+import Head from "next/head";
 import { mongoClientDatabase } from "../api/new-meetup";
 
 export default function DetailMeetup(props) {
     const { title, image, address, description } = props.meetupData;
     return (
-        <MeetupDetail
-            title={title}
-            image={image}
-            address={address}
-            description={description}
-        />
+        <>
+            <Head>
+                <title>{title}</title>
+                <meta name="description" content={description} />
+            </Head>
+            <MeetupDetail
+                title={title}
+                image={image}
+                address={address}
+                description={description}
+            />
+        </>
     );
 }
 

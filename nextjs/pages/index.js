@@ -1,9 +1,22 @@
 // name-domain.com/
 import MeetupList from "@/components/meetups/MeetupList.";
+import Head from "next/head";
 import { mongoClientDatabase } from "./api/new-meetup";
 
 export default function HomePage({ meetups }) {
-    return <MeetupList meetups={meetups} />;
+    // Head adalah komponen memungkikan untuk menambahkan elemen head ke bagian halaman head. Semua elemen HTML head dapat ditambahkan ke komponen ini.
+    return (
+        <>
+            <Head>
+                <title>React Meetups</title>
+                <meta
+                    name="description"
+                    content="Browse a huge list of highly active React meetups!"
+                />
+            </Head>
+            <MeetupList meetups={meetups} />
+        </>
+    );
 }
 
 export async function getStaticProps() {
