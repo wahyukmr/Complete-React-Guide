@@ -1,47 +1,52 @@
-import { useRouter } from "next/router";
+import MeetupDetail from "@/components/meetups/MeetupDetail";
+import { ObjectId } from "mongodb";
+import { mongoClientDatabase } from "../api/new-meetup";
 
-export default function DetailMeetu() {
-    const router = useRouter();
-
-    const meetupId = router.query.meetupId;
-
-    return <h1>{meetupId}</h1>;
+export default function DetailMeetup(props) {
+    const { title, image, address, description } = props.meetupData;
+    return (
+        <MeetupDetail
+            title={title}
+            image={image}
+            address={address}
+            description={description}
+        />
+    );
 }
 
-// getStaticPaths adalah fungsi lain yang dimengerti nextjs sama seperti getStaticProps dan getServerSideProps. Dan juga perlu di export dalam file komponen halaman jika halamannya dinamic dan menggunakan getStaticProps, tidak jika menggunakan getServerSideProps. Karena akan memberitahu nextjs nilai parameter dinamic shalaman yang harus dimuat sebelumnya, kemudian menjalankan getStaticProps untuk setiap halaman
 export async function getStaticPaths() {
+    const { collection, client } = await mongoClientDatabase();
+
+    const meetupCollection = collection;
+    const selectIdMeetup = await meetupCollection
+        .find()
+        .project({ _id: 1 })
+        .toArray(); // Yang berari mengambil objek dokumen yang hanya berisi id
+    client.close();
+
     return {
         fallback: false,
-        paths: [
-            {
-                params: {
-                    meetupId: "m1",
-                },
-            },
-            {
-                params: {
-                    meetupId: "m2",
-                },
-            },
-        ],
+        paths: selectIdMeetup.map((meetup) => ({
+            params: { meetupId: meetup._id.toString() },
+        })),
     };
 }
 
-// getStaticProps akan me re-generate semua halaman dinamic terlebih dahulu sebelum semua ID. Karena disini halamannya dinamic, nextjs perlu mengetahui nilai ID mana yang harus di re-generate.
 export async function getStaticProps(context) {
-    // Kita mendapatkan ID dari URL disini, tetapi ini tidak dibuat atau dihasilkan saat user mengunjungi halaman ini dengan URL yang spesifik melainkan setelah proses build. Jadi perlu untuk menyiapkan terlebih dahulu semua URL dari nilai ID yang mungkin dimasukkan user saat runtime, dan itulah tugas getStaticPaths.
     const getId = context.params.meetupId;
+    const { collection, client } = await mongoClientDatabase();
 
-    console.log(getId);
+    const meetupCollection = collection;
+    const selectIdMeetup = await meetupCollection.findOne({
+        _id: new ObjectId(getId),
+    }); // Mendapatkan ObjectId yang dipilih
+    client.close();
 
     return {
         props: {
             meetupData: {
-                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg",
-                id: getId,
-                title: "First Meetup",
-                address: "Some Street 5, Some City",
-                description: "This is a first meetup",
+                ...selectIdMeetup,
+                _id: selectIdMeetup._id.toString(),
             },
         },
     };
