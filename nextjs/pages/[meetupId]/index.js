@@ -32,7 +32,8 @@ export async function getStaticPaths() {
     client.close();
 
     return {
-        fallback: false,
+        // Ssat mengatur fallback ke true atau blocking, nextjs tidak akan menanggapi dengan 404 jika halaman tidak ditemukan, sebaliknya halaman tersebut akan dibuat sesuai request dan setelah itu menyimpannya dalam cache sehingga akan dibuat sebelumnya saat diperlukan. Perbedaannya, jika true akan mengembalikan halaman kosong dan kemudian menarik konten yang dihasilkan secara dinamis setelah selesai, jadi perlu menangani kasus bahwa halaman tersebut belum memiliki data. Sedangkan jika blocking user tidak akan melihat apapun sampai halaman tersebut selesai dibuat
+        fallback: "blocking",
         paths: selectIdMeetup.map((meetup) => ({
             params: { meetupId: meetup._id.toString() },
         })),
