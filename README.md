@@ -1,76 +1,16 @@
-## React.js & Next.js
+## Automated Testing
 
-ReactJS dan NextJS keduanya adalah framework untuk membangun aplikasi web dengan JavaScript. Namun, mereka melayani tujuan yang berbeda dan memiliki kekuatan yang berbeda.
+Automatic test di React adalah proses pengujian perangkat lunak secara otomatis yang dilakukan pada kode React dengan menggunakan library atau framework pengujian tertentu, seperti Jest atau Enzyme. Tujuan dari automatic test adalah untuk memastikan bahwa aplikasi React berfungsi dengan benar dan dapat memenuhi kebutuhan fungsional yang diharapkan.
 
-<strong>ReactJS</strong> adalah library JavaScript front-end populer untuk membangun antarmuka pengguna. Ini menyediakan cara untuk membuat komponen UI yang dapat digunakan kembali dan mengelola status secara deklaratif dan efisien. ReactJS dapat digunakan untuk membangun aplikasi satu halaman (SPAs) dan aplikasi yang di-render oleh sisi server (SSR).
+Dalam automatic test di React, biasanya terdapat beberapa jenis test yang dilakukan, antara lain:
 
-<strong>NextJS</strong>, di sisi lain, adalah framework yang dibangun di atas ReactJS yang menambahkan rendering oleh sisi server dan fitur lain seperti pembagian kode otomatis, performa yang dioptimalkan, dan deployment yang mudah untuk membuat aplikasi web berkualitas tinggi yang siap untuk produksi. NextJS sangat berguna untuk membangun aplikasi besar dan kompleks yang membutuhkan performa tinggi dan optimasi SEO.
+-   Unit Test: Seperti yang telah dijelaskan sebelumnya, unit test dilakukan untuk menguji satu unit kecil dari kode React, seperti fungsi-fungsi atau metode-metode dalam sebuah komponen.
+-   Integration Test: Integration test dilakukan untuk memastikan bahwa komponen-komponen dalam aplikasi React dapat berinteraksi dengan benar ketika diintegrasikan.
+-   End-to-End Test: End-to-end test dilakukan untuk menguji aplikasi React secara keseluruhan dari awal hingga akhir.
 
-Berikut adalah beberapa perbedaan kunci antara NextJS dan ReactJS:
+Dalam melakukan automatic test di React, beberapa hal yang perlu diperhatikan antara lain adalah:
 
--   <strong>Server-side rendering:</strong> NextJS menyediakan rendering oleh sisi server secara langsung, yang memungkinkan untuk melakukan Pre-rendering, Pre-rendering sendiri adalah sebuah konsep dimana server melakukan render terhadap application component dengan segala data yang ada pada komponen tersebut sebelum dikirim kepada user dalam bentuk file HTML. Menampilkan file HTML yang telah siap akan membuat browser menampilkan aplikasi jauh lebih cepat secara akses maupun performa dan lebih ramah SEO. ReactJS tidak menyediakan fungsionalitas ini secara default, tetapi bisa dicapai menggunakan library tambahan seperti NextJS.
--   <strong>Pembagian kode otomatis:</strong> NextJS secara otomatis membagi kode menjadi beberapa bagian kecil, yang dapat dimuat secara dinamis sesuai kebutuhan. Ini menghasilkan waktu muat yang lebih cepat dan performa yang lebih baik. ReactJS tidak menyediakan fungsionalitas ini, tetapi bisa dicapai menggunakan library tambahan.
--   <strong>Routing:</strong> NextJS menyediakan sistem routing bawaan yang membuat mudah untuk menentukan dan mengelola rute halaman. ReactJS tidak menyediakan fungsionalitas ini, tetapi bisa dicapai menggunakan library tambahan.
--   <strong>Deployment:</strong> NextJS memudahkan untuk menyebarluaskan aplikasi Anda ke produksi dengan menyediakan konfigurasi pembangunan yang dioptimalkan dan optimasi otomatis. ReactJS membutuhkan konfigurasi dan penyiapan tambahan untuk diterbitkan ke produksi.
-
-Secara keseluruhan, NextJS adalah framework yang sangat kuat yang menyediakan banyak manfaat untuk membangun aplikasi web berkualitas tinggi, sementara ReactJS adalah library yang lebih ringan yang ideal untuk membangun komponen UI yang dapat digunakan kembali.
-
-## Next.js sebagai fullstack framework
-
-Next.js disebut sebagai "fullstack framework" karena ia menyediakan dukungan untuk membangun aplikasi web lengkap secara end-to-end, dari rendering oleh sisi server hingga interaksi pengguna oleh sisi klien.
-
-Dalam tradisi pengembangan web, pengembangan aplikasi web terdiri dari dua komponen utama: sisi klien (front-end) dan sisi server (back-end). Sisi klien biasanya meliputi komponen-komponen seperti antarmuka pengguna, HTML, CSS, dan JavaScript yang berjalan di browser pengguna. Di sisi lain, sisi server meliputi komponen-komponen seperti server web, database, dan API yang digunakan untuk mengakses data.
-
-Next.js, sebagai "fullstack framework", memungkinkan pengembang untuk membuat aplikasi web lengkap yang dapat merender halaman secara server-side, memiliki routing yang baik, pembagian kode otomatis, dan performa yang dioptimalkan. Selain itu, Next.js menyediakan dukungan untuk fitur seperti autentikasi pengguna, penanganan formulir, dan akses ke data melalui API.
-
-Karena Next.js menyediakan dukungan untuk sisi klien dan sisi server, serta fitur-fitur yang dibutuhkan untuk membangun aplikasi web yang lengkap, ia dapat disebut sebagai "fullstack framework". Hal ini juga memudahkan pengembangan aplikasi web dengan Next.js, karena pengembang tidak perlu mempelajari banyak teknologi terpisah dan dapat memusatkan perhatian pada pengembangan fitur-fitur aplikasi.
-
-### Dinamic pages
-
-Jika memiliki tanda kurung siku di nama file, ini memberi tahu nextjs bahwa ini akan menjadi halaman dinamic sehingga harus dimuat untuk nilai yang berbeda pada path.
-
-## Static-side generation & Server-side Rendering nextjs
-
-Static-side generation dan server-side rendering adalah dua teknik yang berbeda yang bisa digunakan dalam Next.js untuk mempercepat waktu rendering halaman web dan meningkatkan pengalaman pengguna.
-
-1.  <strong>Server-side rendering (SSR)</strong> di Next.js memungkinkan untuk men-generate halaman web pada waktu request, yaitu ketika pengguna mengakses halaman web. Dalam SSR, server akan memproses permintaan pengguna dan mengirimkan halaman web yang telah di-generate dari server. SSR berguna untuk membuat aplikasi yang dinamis dan kompleks karena dapat mengambil data dari server dan men-generate halaman dengan data tersebut.
-
-    Next.js memiliki dukungan untuk Server Side Rendering melalui fitur "getServerSideProps()". getServerSideProps digunakan ketika kita ingin mengambil data pada saat request dari client (saat website diakses), dan data yang diambil akan selalu up-to-date karena diambil langsung dari server pada saat request. getServerSideProps sangat cocok digunakan pada data yang dinamis, misalnya data dari database.
-
-    SSR (server-side rendering) cocok untuk proyek-proyek yang memerlukan konten yang dinamis dan dapat diperbarui secara teratur, serta fitur-fitur interaktif seperti fitur pencarian, tampilan data real-time, atau formulir online. Beberapa contoh proyek yang sebaiknya menggunakan SSR adalah:
-
-    -   <strong>Situs web e-commerce:</strong> Situs web e-commerce memerlukan interaksi yang lebih dinamis antara pengguna dan server, seperti memuat daftar produk dalam halaman yang dapat di-scrolling, menampilkan tampilan produk secara real-time, dan fitur pencarian yang dinamis. SSR dapat memungkinkan situs web e-commerce untuk memberikan pengalaman pengguna yang lebih baik dengan waktu respon yang cepat.
-    -   <strong>Situs web media:</strong> Situs web media memerlukan fitur-fitur interaktif seperti memuat daftar artikel secara real-time, pencarian, atau berbagi konten ke media sosial. SSR dapat memungkinkan situs web media untuk memuat konten dengan cepat dan responsif.
-    -   <strong>Situs web game:</strong> Situs web game seringkali memerlukan fitur-fitur interaktif seperti fitur real-time chat, tampilan data real-time, atau memuat game secara dinamis. SSR dapat memungkinkan situs web game untuk memberikan pengalaman pengguna yang lebih baik dan responsif.
-    -   <strong>Aplikasi bisnis:</strong> Aplikasi bisnis memerlukan fitur-fitur yang lebih kompleks seperti formulir online, tampilan data real-time, atau fitur-fitur keamanan yang tinggi. SSR dapat memungkinkan aplikasi bisnis untuk memuat data dan mengirim permintaan ke server dengan cepat dan responsif.
-
-2.  Default rendering / <strong>Static-side generation (SSG)</strong> di Next.js memungkinkan untuk men-generate halaman web pada waktu kompilasi, yaitu ketika aplikasi di-build. Dalam SSG, halaman web di-generate menjadi file HTML yang disimpan di server, sehingga saat pengguna mengakses halaman, server hanya perlu menampilkan file HTML yang sudah disimpan, tanpa perlu melakukan pengolahan data yang kompleks.
-
-    Next.js memiliki dukungan untuk Static Site Generation melalui fitur "getStaticProps()". getStaticProps digunakan ketika kita ingin mengambil data pada saat build time (saat kita build website), dan data yang diambil akan di-cache oleh Next.js dan di-update sesuai waktu yang ditentukan oleh kita atau bila terjadi perubahan pada data. getStaticProps sangat cocok digunakan pada data yang statis, misalnya data dari file JSON atau CMS.
-
-    Situs web statis cocok untuk proyek-proyek dengan konten yang tidak berubah atau tidak berubah sering, seperti halaman arahan (landing page), portofolio pribadi, situs web perusahaan, blog statis, atau situs web dokumentasi. Beberapa contoh proyek yang sebaiknya menggunakan situs web statis adalah:
-
-    -   <strong>Situs web perusahaan:</strong> Jika situs web perusahaan hanya berisi informasi umum seperti deskripsi perusahaan, informasi kontak, atau informasi produk atau layanan, maka situs web statis dapat menjadi pilihan yang tepat. Situs web statis akan lebih cepat dimuat dan memungkinkan perusahaan untuk menghemat biaya hosting.
-    -   <strong>Halaman arahan (landing page):</strong> Halaman arahan seringkali hanya berisi informasi yang relatif statis, seperti deskripsi produk atau layanan, formulir kontak, atau tautan ke halaman lain. Situs web statis dapat memungkinkan halaman arahan dimuat lebih cepat dan memberikan pengalaman pengguna yang lebih baik.
-    -   <strong>Portofolio pribadi:</strong> Jika Anda seorang desainer, pengembang, atau seniman, maka situs web statis dapat menjadi cara yang baik untuk menunjukkan portofolio Anda. Situs web statis memungkinkan Anda untuk menampilkan karya Anda dengan cepat dan efisien tanpa perlu mempertimbangkan aspek dinamis.
-    -   <strong>Situs web dokumentasi:</strong> Jika Anda ingin membuat situs web dokumentasi atau pengetahuan dasar, maka situs web statis dapat menjadi pilihan yang baik. Situs web statis dapat memungkinkan dokumentasi Anda dimuat lebih cepat dan memudahkan pengguna untuk menavigasi konten Anda.
-
-Perbedaan utama antara SSG dan SSR di Next.js adalah waktu rendering halaman web. SSG menghasilkan file HTML pada waktu build, sementara SSR mem-generate halaman web pada waktu request. Karena SSG menghasilkan file HTML yang bisa disajikan langsung oleh server, maka SSG lebih cepat dalam menampilkan halaman web ketika pengguna mengaksesnya. Namun, SSG kurang fleksibel karena hanya bisa menampilkan data yang sudah ada pada waktu build, sedangkan SSR bisa menampilkan data yang baru di-generate pada waktu request.
-
-Pilihan antara SSG atau SSR bergantung pada jenis aplikasi yang ingin dibuat dan kebutuhan penggunaannya. Jika aplikasi membutuhkan konten yang dinamis dan sering berubah serta memerlukan akses ke objek request, maka SSR lebih cocok. Namun, jika aplikasi memiliki konten yang relatif statis dan tidak sering berubah serta tidak memerlukan objek request, maka SSG bisa menjadi pilihan yang lebih tepat untuk meningkatkan kecepatan dan kinerja halaman web.
-
-### Revalidate property
-
-revalidate adalah sebuah properti yang bisa digunakan dalam static generation di Next.js untuk mengatur interval waktu (dalam detik) sebelum file HTML hasil generate akan di-revalidate atau diperbarui. Properti ini bisa digunakan pada halaman yang di-generate secara static, dengan tujuan untuk memastikan bahwa data yang ditampilkan di halaman selalu up-to-date.
-
-Penggunaan revalidate sangat berguna dalam mengoptimalkan performa situs web. Dengan menggunakan properti ini, Anda bisa mengatur interval waktu di mana data di-cache dianggap valid, sehingga situs web bisa menampilkan data yang terbaru tanpa perlu merefresh halaman. Selain itu, penggunaan revalidate juga berguna dalam menghemat sumber daya server, karena halaman hanya akan di-generate ulang ketika data sudah usang dan diperlukan kembali.
-
-## API Routes
-
-API routes di Next.js adalah fitur yang memungkinkan kita membuat API server-side dengan mudah. API routes menyediakan cara mudah untuk menangani permintaan HTTP dari klien dan mengirimkan kembali respon yang sesuai.
-
-API routes pada Next.js dibuat dengan membuat file JavaScript di dalam direktori /pages/api. File ini harus memiliki nama yang dimulai dengan awalan api/. Setiap file ini akan berisi kode JavaScript yang menangani permintaan HTTP dan mengirimkan kembali respon yang sesuai dan akan berjalan diserver dan tidak akan pernah di ekspose ke klien.
-
-Contohnya, jika kita ingin membuat API route untuk mengambil daftar produk dari server, kita bisa membuat file bernama api/products.js dan menambahkan kode JavaScript untuk menangani permintaan GET dari klien dan mengirimkan daftar produk sebagai respon.
-
-API routes pada Next.js sangat berguna ketika kita ingin membuat aplikasi web yang memerlukan komunikasi dengan server-side, seperti aplikasi e-commerce atau platform media sosial. Dengan API routes, kita dapat membuat server-side logic yang dapat dipanggil dari sisi klien secara mudah dan efisien.
+-   Membuat test case yang baik dan akurat, sehingga dapat memastikan bahwa kode React berfungsi dengan benar.
+-   Menggunakan library atau framework pengujian yang tepat, seperti Jest atau Enzyme, untuk mempermudah proses pengujian.
+-   Memastikan bahwa test dapat diulang dan berjalan secara konsisten, sehingga dapat mendeteksi bug atau kesalahan secara akurat.
+-   Memonitor hasil test secara terus-menerus untuk memastikan bahwa setiap perubahan pada kode React tidak mengganggu fungsi yang sudah diuji sebelumnya.
