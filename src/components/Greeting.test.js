@@ -46,6 +46,7 @@ describe("Greeting component", () => {
         expect(outputElement).toBeInTheDocument();
     });
 
+    // Untuk menguji ketika mengklik tombol kemudian memeriksa apakah paragraf text 'see you' tidak terlihat
     test("Does not render 'see you' if the button was clicked", async () => {
         // Arrange
         render(<Greeting />);
@@ -55,10 +56,10 @@ describe("Greeting component", () => {
         await user.click(screen.getByRole("button"));
 
         // Assert
-        // Ini akan memunculkan error jika tidak ditemukan dan test ini tidak akan pernah passed jika element tidak ditemukan
-        const outputElement = screen.queryByText("good to see you", {
+        // Dengan menggunakan queryByText akan mengembalikan null jika element tidak ditemukan
+        const outputElement = screen.queryByText("see you", {
             exact: false,
         });
-        expect(outputElement).toBeNull();
+        expect(outputElement).toBeNull(); // mengecek apakah elemen output berupa null
     });
 });

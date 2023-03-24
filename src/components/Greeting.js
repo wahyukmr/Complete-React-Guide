@@ -10,6 +10,7 @@ export default function Greeting() {
     return (
         <div>
             <h1>Helloo</h1>
+            {/* <p>See you</p> check error */}
             {!changedText && <p>See you</p>}
             {changedText && <p>Change!!</p>}
             <button onClick={changeTextHandler}>Change Text</button>
